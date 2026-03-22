@@ -178,11 +178,15 @@
 
 .hero-copy h2 {
   margin: 0;
-  font-family: Impact, Haettenschweiler, 'Arial Black', sans-serif;
+  font-family: 'Arial Black', Impact, Haettenschweiler, sans-serif;
   font-size: clamp(4rem, 8vw, 7.5rem);
-  line-height: 0.92;
-  letter-spacing: -0.04em;
-  text-transform: lowercase;
+  line-height: 0.88;
+  letter-spacing: -0.055em;
+  text-transform: capitalize;
+  text-wrap: balance;
+  text-shadow:
+    0 0 1px rgba(255, 255, 255, 0.6),
+    0 18px 34px rgba(0, 0, 0, 0.28);
 }
 
 .accent-name {
@@ -194,7 +198,7 @@
 
 .accent-name::before,
 .accent-name::after {
-  content: 'K';
+  content: attr(data-text);
   position: absolute;
   top: 0;
   left: 0;

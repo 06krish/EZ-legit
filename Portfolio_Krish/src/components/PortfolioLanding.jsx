@@ -50,9 +50,9 @@ function PortfolioLanding() {
           <h2>
             Hi,
             <br />
-            I&apos;m <span className="accent-name">Krish</span>,
+            I&apos;m <span className="accent-name" data-text="Krish">Krish</span>,
             <br />
-            web developer
+            software developer
           </h2>
           <div className="code-tag code-paragraph">&lt;p&gt;</div>
           <p className="hero-subtitle">Front End Developer / React Enthusiast / UI Builder</p>
