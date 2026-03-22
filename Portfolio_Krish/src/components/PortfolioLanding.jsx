@@ -11,7 +11,7 @@ function PortfolioLanding() {
             <span className="brand-front">K</span>
           </div>
           <h1>Krish</h1>
-          <p>Web Developer</p>
+          <p>Software Developer</p>
         </div>
 
         <nav className="sidebar-nav" aria-label="Primary">
