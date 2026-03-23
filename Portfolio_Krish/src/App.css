@@ -308,16 +308,67 @@
   position: relative;
   min-height: 600px;
   z-index: 0;
+  display: grid;
+  place-items: center;
 }
 
 .neon-orbit {
   width: min(100%, 760px);
   height: auto;
+  overflow: visible;
+  filter:
+    drop-shadow(0 0 14px rgba(255, 25, 110, 0.34))
+    drop-shadow(0 0 46px rgba(255, 25, 110, 0.2))
+    drop-shadow(0 0 82px rgba(255, 25, 110, 0.08));
+  animation: orbitDrift 10s ease-in-out infinite alternate;
+}
+
+.orbit-backdrop {
+  fill: none;
+  stroke: rgba(255, 58, 133, 0.18);
+  stroke-width: 1.05;
+  transform-origin: 60% 50%;
+  animation: orbitHalo 12s ease-in-out infinite alternate;
+}
+
+.orbit-cluster {
   fill: none;
   stroke: url(#orbitGlow);
-  stroke-width: 1.35;
-  filter: drop-shadow(0 0 8px rgba(255, 67, 134, 0.3));
-  animation: floatOrbit 9s ease-in-out infinite alternate;
+  stroke-width: 1.65;
+  stroke-linecap: round;
+  transform-box: fill-box;
+  transform-origin: center;
+}
+
+.orbit-cluster path {
+  stroke-dasharray: 1200;
+  stroke-dashoffset: 1200;
+}
+
+.orbit-cluster-a {
+  opacity: 0.92;
+  animation: orbitSweepA 9s ease-in-out infinite alternate;
+}
+
+.orbit-cluster-a path {
+  animation: orbitTrace 7.5s ease-in-out infinite;
+}
+
+.orbit-cluster-b {
+  opacity: 0.82;
+  animation: orbitSweepB 8s ease-in-out infinite alternate;
+}
+
+.orbit-cluster-b path {
+  animation: orbitTrace 6.2s ease-in-out infinite;
+  animation-delay: 0.6s;
+}
+
+.orbit-core {
+  fill: url(#coreGlow);
+  opacity: 1;
+  transform-origin: center;
+  animation: corePulse 4.2s ease-in-out infinite;
 }
 
 .code-tag {
@@ -363,13 +414,79 @@
   bottom: 5.5rem;
 }
 
-@keyframes floatOrbit {
+@keyframes orbitDrift {
   from {
-    transform: translate3d(0, -12px, 0) scale(0.985);
+    transform: translate3d(-8px, -10px, 0) scale(0.985) rotate(-1deg);
   }
 
   to {
-    transform: translate3d(12px, 14px, 0) scale(1.02);
+    transform: translate3d(10px, 14px, 0) scale(1.025) rotate(1deg);
+  }
+}
+
+@keyframes orbitHalo {
+  from {
+    opacity: 0.5;
+    transform: rotate(-6deg) scale(0.98);
+  }
+
+  to {
+    opacity: 1;
+    transform: rotate(5deg) scale(1.02);
+  }
+}
+
+@keyframes orbitSweepA {
+  from {
+    transform: translate3d(-6px, 8px, 0) rotate(-4deg);
+  }
+
+  to {
+    transform: translate3d(8px, -6px, 0) rotate(3deg);
+  }
+}
+
+@keyframes orbitSweepB {
+  from {
+    transform: translate3d(10px, -4px, 0) rotate(3deg);
+  }
+
+  to {
+    transform: translate3d(-8px, 10px, 0) rotate(-5deg);
+  }
+}
+
+@keyframes orbitTrace {
+  0% {
+    stroke-dashoffset: 1200;
+    opacity: 0.42;
+  }
+
+  25% {
+    opacity: 1;
+  }
+
+  55% {
+    stroke-dashoffset: 400;
+    opacity: 0.92;
+  }
+
+  100% {
+    stroke-dashoffset: -120;
+    opacity: 0.48;
+  }
+}
+
+@keyframes corePulse {
+  0%,
+  100% {
+    transform: scale(0.88);
+    opacity: 0.7;
+  }
+
+  50% {
+    transform: scale(1.18);
+    opacity: 1;
   }
 }
 
@@ -493,6 +610,10 @@
 
   .hero-stage {
     padding: 2.2rem 1.1rem 3rem;
+  }
+
+  .hero-art {
+    margin-top: 0.5rem;
   }
 
   .hero-copy h2 {
