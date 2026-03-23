@@ -9,13 +9,17 @@
 }
 
 .sidebar {
+  position: sticky;
+  top: 0;
   display: flex;
   flex-direction: column;
   background: rgba(10, 10, 10, 0.92);
   border-right: 1px solid rgba(255, 255, 255, 0.06);
-  min-height: 100vh;
+  height: 100vh;
   box-shadow: 18px 0 40px rgba(0, 0, 0, 0.24);
   backdrop-filter: blur(16px);
+  align-self: start;
+  overflow: hidden;
 }
 
 .brand-panel {
@@ -169,13 +173,19 @@
   transform: translateY(4px);
 }
 
+.page-content {
+  min-width: 0;
+}
+
 .hero-stage {
   position: relative;
+  height: 100vh;
+  min-height: 720px;
   display: grid;
   grid-template-columns: minmax(360px, 620px) minmax(320px, 1fr);
   align-items: center;
   gap: 2rem;
-  padding: 4rem clamp(2rem, 4vw, 5rem);
+  padding: 4.75rem clamp(2rem, 4vw, 5rem);
   overflow: hidden;
 }
 
@@ -207,11 +217,14 @@
   position: relative;
   z-index: 1;
   max-width: 620px;
-  padding-block: 1.2rem;
+  padding-block: 2.15rem 3.2rem;
+  align-self: center;
 }
 
 .eyebrow {
-  margin: 0 0 0.5rem;
+  position: relative;
+  z-index: 3;
+  margin: 0 0 0.65rem;
   color: #7f7f7f;
   font-size: 1rem;
   letter-spacing: 0.24em;
@@ -230,6 +243,7 @@
     0 10px 24px rgba(0, 0, 0, 0.16);
   overflow: hidden;
   animation: eyebrowPulse 3.4s ease-in-out infinite;
+  transform: translateX(0.2rem);
 }
 
 .eyebrow-highlight::after {
@@ -242,10 +256,12 @@
 }
 
 .hero-copy h2 {
+  position: relative;
+  z-index: 2;
   margin: 0;
   font-family: 'Arial Black', Impact, Haettenschweiler, sans-serif;
-  font-size: clamp(4rem, 8vw, 7.5rem);
-  line-height: 0.88;
+  font-size: clamp(3.35rem, 7vw, 6.35rem);
+  line-height: 0.92;
   letter-spacing: -0.055em;
   text-transform: capitalize;
   text-wrap: balance;
@@ -284,13 +300,13 @@
 }
 
 .hero-subtitle {
-  margin: 0.35rem 0 2.5rem;
+  margin: 0.55rem 0 3.45rem;
   color: #8f8f8f;
-  font-size: clamp(1rem, 1.6vw, 1.25rem);
-  letter-spacing: 0.28em;
+  font-size: clamp(0.84rem, 1.15vw, 1rem);
+  letter-spacing: 0.16em;
   text-transform: uppercase;
-  max-width: 36rem;
-  line-height: 1.7;
+  max-width: 40rem;
+  line-height: 1.9;
 }
 
 .cta-button {
@@ -327,12 +343,186 @@
   transform: translateY(-3px);
 }
 
+.hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  align-items: center;
+}
+
+.cta-button-secondary {
+  border-color: rgba(255, 45, 122, 0.72);
+  color: #ffd6e6;
+  background: linear-gradient(90deg, rgba(255, 45, 122, 0.08), rgba(255, 45, 122, 0.03));
+}
+
+.cta-button-secondary:hover {
+  color: #111;
+  box-shadow:
+    inset 260px 0 0 0 #ff4f95,
+    0 0 24px rgba(255, 79, 149, 0.28),
+    0 24px 40px rgba(0, 0, 0, 0.28);
+}
+
+.download-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 0.55rem;
+  font-size: 1rem;
+  line-height: 1;
+}
+
+.skills-section {
+  position: relative;
+  padding: 5.5rem clamp(1.5rem, 4vw, 4.5rem) 5rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+  background:
+    radial-gradient(circle at 15% 20%, rgba(20, 241, 238, 0.08), transparent 28%),
+    radial-gradient(circle at 82% 30%, rgba(255, 45, 122, 0.1), transparent 30%),
+    linear-gradient(180deg, rgba(22, 22, 22, 0.88), rgba(14, 14, 14, 0.96));
+}
+
+.skills-section::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+  background-size: 48px 48px;
+  mask-image: linear-gradient(180deg, rgba(0, 0, 0, 0.7), transparent 85%);
+  pointer-events: none;
+}
+
+.skills-header,
+.skills-grid {
+  position: relative;
+  z-index: 1;
+}
+
+.skills-header {
+  max-width: 760px;
+  margin-bottom: 2.75rem;
+}
+
+.section-kicker {
+  margin: 0 0 0.85rem;
+  color: #16f1ed;
+  font-size: 0.92rem;
+  letter-spacing: 0.34em;
+  text-transform: uppercase;
+}
+
+.skills-header h3 {
+  margin: 0;
+  max-width: 13ch;
+  font-family: 'Arial Black', Impact, Haettenschweiler, sans-serif;
+  font-size: clamp(2rem, 4vw, 3.4rem);
+  line-height: 0.96;
+  letter-spacing: -0.04em;
+  text-transform: capitalize;
+}
+
+.section-intro {
+  margin: 1.15rem 0 0;
+  max-width: 52rem;
+  color: #a9a9a9;
+  font-size: 1.02rem;
+  line-height: 1.9;
+  letter-spacing: 0.03em;
+}
+
+.skills-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1.3rem;
+}
+
+.skill-card {
+  position: relative;
+  padding: 1.6rem;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.04), rgba(255, 255, 255, 0.02));
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.05),
+    0 22px 50px rgba(0, 0, 0, 0.22);
+  backdrop-filter: blur(8px);
+  transition:
+    transform 220ms ease,
+    border-color 220ms ease,
+    box-shadow 220ms ease;
+}
+
+.skill-card::before {
+  content: '';
+  position: absolute;
+  inset: 0 auto 0 0;
+  width: 4px;
+  background: linear-gradient(180deg, #16f1ed, #ff2d7a);
+  opacity: 0.7;
+}
+
+.skill-card:hover {
+  transform: translateY(-6px);
+  border-color: rgba(22, 241, 237, 0.22);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.08),
+    0 26px 56px rgba(0, 0, 0, 0.28),
+    0 0 24px rgba(255, 45, 122, 0.08);
+}
+
+.skill-card-kicker {
+  margin: 0 0 0.8rem;
+  color: #f3f3f3;
+  font-size: 1.05rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.skill-card-copy {
+  margin: 0 0 1.4rem;
+  color: #9c9c9c;
+  line-height: 1.8;
+}
+
+.skill-pill-wrap {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.7rem;
+}
+
+.skill-pill {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.55rem 0.8rem;
+  border: 1px solid rgba(22, 241, 237, 0.14);
+  background: rgba(255, 255, 255, 0.03);
+  color: #d6ffff;
+  font-size: 0.84rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  transition:
+    transform 180ms ease,
+    border-color 180ms ease,
+    color 180ms ease;
+}
+
+.skill-pill:hover {
+  transform: translateY(-2px);
+  border-color: rgba(255, 45, 122, 0.3);
+  color: #ffffff;
+}
+
 .hero-art {
   position: relative;
   min-height: 600px;
   z-index: 0;
   display: grid;
   place-items: center;
+  align-self: center;
 }
 
 .neon-orbit {
@@ -396,45 +586,47 @@
 
 .code-tag {
   position: absolute;
-  color: rgba(255, 255, 255, 0.18);
+  color: rgba(255, 255, 255, 0.24);
   font-family: 'Cascadia Code', Consolas, monospace;
-  font-size: 1.15rem;
+  font-size: 1.1rem;
   font-style: italic;
   letter-spacing: 0.03em;
+  text-shadow: 0 0 14px rgba(255, 255, 255, 0.06);
+  z-index: 4;
 }
 
 .code-top {
   top: 1.4rem;
-  left: 4rem;
+  left: 2.35rem;
 }
 
 .code-top-secondary {
-  top: 3.2rem;
-  left: 5.8rem;
+  top: 2.85rem;
+  left: 3.85rem;
 }
 
 .code-title {
-  top: -1.8rem;
-  left: -0.7rem;
+  top: 3.45rem;
+  left: 2.2rem;
 }
 
 .code-paragraph {
-  left: -0.8rem;
-  bottom: 8.8rem;
+  left: 2.15rem;
+  bottom: 11rem;
 }
 
 .code-close {
-  bottom: 4.8rem;
+  bottom: 5.2rem;
 }
 
 .code-end {
-  left: 52%;
-  bottom: 44%;
+  left: 51%;
+  bottom: 43%;
 }
 
 .code-end-secondary {
-  right: 6rem;
-  bottom: 5.5rem;
+  right: 4.5rem;
+  bottom: 5.1rem;
 }
 
 @keyframes orbitDrift {
@@ -608,9 +800,15 @@
   }
 
   .hero-stage {
+    height: auto;
+    min-height: 100vh;
     grid-template-columns: 1fr;
-    padding: 3.25rem 2rem 4rem;
+    padding: 3.25rem 2rem;
     gap: 1rem;
+  }
+
+  .skills-grid {
+    grid-template-columns: 1fr;
   }
 
   .hero-art {
@@ -634,7 +832,9 @@
   }
 
   .sidebar {
+    position: relative;
     min-height: auto;
+    height: auto;
     border-right: 0;
     border-bottom: 1px solid rgba(255, 255, 255, 0.06);
   }
@@ -666,7 +866,20 @@
   }
 
   .hero-stage {
-    padding: 2.2rem 1.1rem 3rem;
+    min-height: auto;
+    padding: 2.4rem 1.1rem;
+  }
+
+  .skills-section {
+    padding: 4.2rem 1.1rem 3.4rem;
+  }
+
+  .skills-header {
+    margin-bottom: 2rem;
+  }
+
+  .skills-header h3 {
+    max-width: none;
   }
 
   .hero-art {
@@ -674,18 +887,23 @@
   }
 
   .hero-copy h2 {
-    font-size: clamp(3.2rem, 16vw, 5rem);
+    font-size: clamp(2.9rem, 13vw, 4.4rem);
   }
 
   .hero-subtitle {
     margin-bottom: 2rem;
-    letter-spacing: 0.14em;
-    line-height: 1.6;
+    letter-spacing: 0.1em;
+    line-height: 1.7;
   }
 
   .cta-button {
     width: 100%;
     min-width: 0;
+  }
+
+  .hero-actions {
+    flex-direction: column;
+    align-items: stretch;
   }
 
   .code-top,
