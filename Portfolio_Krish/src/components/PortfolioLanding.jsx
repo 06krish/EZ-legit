@@ -34,7 +34,7 @@ function PortfolioLanding() {
           <a className="scroll-indicator" href="#contact">
             <span>Scroll down</span>
             <span className="scroll-arrow" aria-hidden="true">
-              ↓
+              {'\u2193'}
             </span>
           </a>
         </div>
@@ -46,7 +46,10 @@ function PortfolioLanding() {
 
         <section className="hero-copy">
           <div className="code-tag code-title">&lt;h1&gt;</div>
-          <p className="eyebrow">Hello, my name is</p>
+          <p className="eyebrow">
+            <span className="eyebrow-highlight">Hello, my name is Krish Raj</span>
+          </p>
+
           <h2>
             Hi,
             <br />
@@ -54,6 +57,7 @@ function PortfolioLanding() {
             <br />
             software developer
           </h2>
+
           <div className="code-tag code-paragraph">&lt;p&gt;</div>
           <p className="hero-subtitle">Front End Developer / React Enthusiast / UI Builder</p>
           <div className="code-tag code-paragraph code-close">&lt;/p&gt;</div>
