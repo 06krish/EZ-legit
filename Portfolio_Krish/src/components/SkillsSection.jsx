@@ -1,3 +1,36 @@
+const iconMap = {
+  HTML5: '</>',
+  CSS3: '#',
+  JavaScript: 'JS',
+  React: 'R',
+  'Responsive UI': 'UI',
+  Accessibility: 'A11Y',
+  'Node.js': 'N',
+  'Express.js': 'EX',
+  MongoDB: 'DB',
+  'REST APIs': 'API',
+  'Backend Logic': 'BE',
+  'Database Design': 'SQL',
+  'Data Structures': 'DS',
+  Algorithms: 'AL',
+  'Problem Solving': 'PS',
+  'Logic Building': 'LB',
+  'Code Optimization': 'CO',
+  Debugging: 'DG',
+  'Android Studio': 'AS',
+  Kotlin: 'KT',
+  XML: 'XML',
+  'Android UI': 'UI',
+  Layouts: 'LY',
+  'App Development': 'APP',
+  'Git & GitHub': 'GH',
+  Vite: 'VT',
+  'VS Code': 'VS',
+  npm: 'NPM',
+  'Full-Stack Projects': 'FS',
+  'Clean Code': 'CC',
+}
+
 const skillGroups = [
   {
     title: 'Frontend',
@@ -46,7 +79,10 @@ function SkillsSection() {
             <div className="skill-pill-wrap">
               {group.skills.map((skill) => (
                 <span key={skill} className="skill-pill">
-                  {skill}
+                  <span className="skill-pill-icon" aria-hidden="true">
+                    {iconMap[skill] ?? '*'}
+                  </span>
+                  <span>{skill}</span>
                 </span>
               ))}
             </div>

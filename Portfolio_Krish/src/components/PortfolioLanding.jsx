@@ -1,4 +1,6 @@
+import AboutSection from './AboutSection'
 import SkillsSection from './SkillsSection'
+import WorkSection from './WorkSection'
 
 const navItems = ['About', 'My Skills', 'Work', 'Blog', 'Contact']
 const socials = ['in', 'gh', 'ig']
@@ -33,7 +35,7 @@ function PortfolioLanding() {
             ))}
           </div>
 
-          <a className="scroll-indicator" href="#contact">
+          <a className="scroll-indicator" href="#about">
             <span>Scroll down</span>
             <span className="scroll-arrow" aria-hidden="true">
               {'\u2193'}
@@ -67,18 +69,18 @@ function PortfolioLanding() {
             </p>
             <div className="code-tag code-paragraph code-close">&lt;/p&gt;</div>
 
-          <div className="hero-actions">
-            <a className="cta-button" id="contact" href="mailto:krish@example.com">
-              Contact me!
-            </a>
-            <a className="cta-button cta-button-secondary" href="/Krish-Raj-Resume.pdf" download>
-              <span className="download-icon" aria-hidden="true">
-                ↓
-              </span>
-              <span>Download Resume</span>
-            </a>
-          </div>
-        </section>
+            <div className="hero-actions">
+              <a className="cta-button" id="contact" href="mailto:krish@example.com">
+                Contact me!
+              </a>
+              <a className="cta-button cta-button-secondary" href="/Krish-Raj-Resume.pdf" download>
+                <span className="download-icon" aria-hidden="true">
+                  {'\u2193'}
+                </span>
+                <span>Download Resume</span>
+              </a>
+            </div>
+          </section>
 
           <section className="hero-art" aria-hidden="true">
             <svg viewBox="0 0 800 700" className="neon-orbit" role="presentation">
@@ -123,7 +125,9 @@ function PortfolioLanding() {
           <div className="code-tag code-end-secondary">&lt;/body&gt;</div>
         </section>
 
+        <AboutSection />
         <SkillsSection />
+        <WorkSection />
       </main>
     </div>
   )
