@@ -1,4 +1,5 @@
 import AboutSection from './AboutSection'
+import ContactSection from './ContactSection'
 import SkillsSection from './SkillsSection'
 import WorkSection from './WorkSection'
 
@@ -34,6 +35,15 @@ const socials = [
 ]
 
 function PortfolioLanding() {
+  const handleScrollDown = (event) => {
+    event.preventDefault()
+
+    window.scrollBy({
+      top: window.innerHeight * 0.85,
+      behavior: 'smooth',
+    })
+  }
+
   return (
     <div className="portfolio-shell">
       <aside className="sidebar">
@@ -69,7 +79,7 @@ function PortfolioLanding() {
             ))}
           </div>
 
-          <a className="scroll-indicator" href="#about">
+          <a className="scroll-indicator" href="#about" onClick={handleScrollDown}>
             <span>Scroll down</span>
             <span className="scroll-arrow" aria-hidden="true">
               {'\u2193'}
@@ -104,7 +114,7 @@ function PortfolioLanding() {
             <div className="code-tag code-paragraph code-close">&lt;/p&gt;</div>
 
             <div className="hero-actions">
-              <a className="cta-button" id="contact" href="mailto:krish@example.com">
+              <a className="cta-button" href="#contact">
                 Contact me!
               </a>
               <a className="cta-button cta-button-secondary" href="/Krish-Raj-Resume.pdf" download>
@@ -162,6 +172,7 @@ function PortfolioLanding() {
         <AboutSection />
         <SkillsSection />
         <WorkSection />
+        <ContactSection />
       </main>
     </div>
   )
