@@ -6,7 +6,7 @@ const navItems = ['About', 'My Skills', 'Work', 'Blog', 'Contact']
 const socials = [
   {
     name: 'LinkedIn',
-    href: 'https://www.linkedin.com/',
+    href: 'https://www.linkedin.com/in/krishraj3406',
     icon: (
       <svg viewBox="0 0 24 24" role="img" aria-hidden="true">
         <path d="M6.94 8.5H3.56V20h3.38V8.5ZM5.25 3A2.02 2.02 0 1 0 5.3 7.04 2.02 2.02 0 0 0 5.25 3Zm15.19 9.88c0-3.47-1.85-5.08-4.32-5.08-1.99 0-2.88 1.1-3.37 1.87V8.5H9.37c.04.77 0 11.5 0 11.5h3.38v-6.42c0-.34.03-.68.13-.93.27-.68.87-1.38 1.89-1.38 1.33 0 1.86 1.02 1.86 2.53V20H20v-6.91Z" />
@@ -15,7 +15,7 @@ const socials = [
   },
   {
     name: 'GitHub',
-    href: 'https://github.com/',
+    href: 'https://github.com/06krish',
     icon: (
       <svg viewBox="0 0 24 24" role="img" aria-hidden="true">
         <path d="M12 .5C5.65.5.5 5.78.5 12.29c0 5.2 3.3 9.6 7.88 11.15.58.11.79-.26.79-.58 0-.29-.01-1.05-.02-2.06-3.2.72-3.88-1.58-3.88-1.58-.52-1.36-1.28-1.72-1.28-1.72-1.04-.73.08-.72.08-.72 1.15.08 1.75 1.21 1.75 1.21 1.02 1.8 2.67 1.28 3.32.98.1-.76.4-1.28.72-1.57-2.56-.3-5.24-1.31-5.24-5.83 0-1.29.45-2.35 1.18-3.18-.12-.3-.51-1.5.11-3.13 0 0 .97-.32 3.18 1.22a10.7 10.7 0 0 1 5.8 0c2.2-1.54 3.17-1.22 3.17-1.22.63 1.63.24 2.83.12 3.13.73.83 1.17 1.89 1.17 3.18 0 4.53-2.68 5.52-5.24 5.82.41.37.78 1.1.78 2.22 0 1.6-.01 2.88-.01 3.27 0 .32.2.69.8.58A11.83 11.83 0 0 0 23.5 12.3C23.5 5.78 18.35.5 12 .5Z" />
@@ -24,7 +24,7 @@ const socials = [
   },
   {
     name: 'Instagram',
-    href: 'https://www.instagram.com/',
+    href: 'https://www.instagram.com/_06krish_?igsh=MW96NXo3c2lhYnRpaA==',
     icon: (
       <svg viewBox="0 0 24 24" role="img" aria-hidden="true">
         <path d="M7.25 2h9.5A5.25 5.25 0 0 1 22 7.25v9.5A5.25 5.25 0 0 1 16.75 22h-9.5A5.25 5.25 0 0 1 2 16.75v-9.5A5.25 5.25 0 0 1 7.25 2Zm0 1.75A3.5 3.5 0 0 0 3.75 7.25v9.5a3.5 3.5 0 0 0 3.5 3.5h9.5a3.5 3.5 0 0 0 3.5-3.5v-9.5a3.5 3.5 0 0 0-3.5-3.5h-9.5Zm10 1.5a1.25 1.25 0 1 1 0 2.5 1.25 1.25 0 0 1 0-2.5ZM12 6.5A5.5 5.5 0 1 1 6.5 12 5.5 5.5 0 0 1 12 6.5Zm0 1.75A3.75 3.75 0 1 0 15.75 12 3.75 3.75 0 0 0 12 8.25Z" />
@@ -61,7 +61,8 @@ function PortfolioLanding() {
                 key={item.name}
                 href={item.href}
                 aria-label={item.name}
-                onClick={(event) => event.preventDefault()}
+                target="_blank"
+                rel="noreferrer"
               >
                 {item.icon}
               </a>
