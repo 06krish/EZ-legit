@@ -1,12 +1,47 @@
 @import "tailwindcss";
 
+@custom-variant dark (&:where(.dark, .dark *));
+
 :root {
-  --font-body:
-    "Segoe UI", "Trebuchet MS", "Helvetica Neue", Arial, sans-serif;
-  --font-display:
-    "Arial Black", Impact, Haettenschweiler, "Franklin Gothic Heavy", sans-serif;
-  --font-hero:
-    Georgia, "Times New Roman", "Palatino Linotype", "Book Antiqua", serif;
+  --font-body: "Segoe UI", "Trebuchet MS", "Helvetica Neue", Arial, sans-serif;
+  --font-display: "Arial Black", Impact, Haettenschweiler, "Franklin Gothic Heavy", sans-serif;
+  --font-hero: Georgia, "Times New Roman", "Palatino Linotype", "Book Antiqua", serif;
+
+  --bg-top-right: rgba(236, 72, 153, 0.15);
+  --bg-top-left: rgba(20, 184, 166, 0.15);
+  --bg-gradient-start: #f8fafc;
+  --bg-gradient-mid: #f0fdfa;
+  --bg-gradient-end: #fdf2f8;
+
+  --text-primary: #0f172a;
+  
+  --selection-bg: rgba(45, 212, 191, 0.3);
+  --selection-text: #000000;
+
+  --p-line-start: rgba(45,212,191,0.3);
+  --p-line-mid: rgba(148,163,184,0.15);
+  --p-line-end: rgba(244,114,182,0.3);
+  --p-glow-center: rgba(255,255,255,0.9);
+  --p-glow-mid: rgba(244,114,182,0.3);
+}
+
+.dark {
+  --bg-top-right: rgba(244, 114, 182, 0.16);
+  --bg-top-left: rgba(45, 212, 191, 0.08);
+  --bg-gradient-start: #000000;
+  --bg-gradient-mid: #020202;
+  --bg-gradient-end: #030105;
+
+  --text-primary: #f8fafc;
+  
+  --selection-bg: rgba(45, 212, 191, 0.3);
+  --selection-text: #ffffff;
+
+  --p-line-start: rgba(45,212,191,0.2);
+  --p-line-mid: rgba(255,255,255,0.15);
+  --p-line-end: rgba(244,114,182,0.25);
+  --p-glow-center: rgba(255,255,255,0.96);
+  --p-glow-mid: rgba(244,114,182,0.68);
 }
 
 html {
@@ -17,10 +52,10 @@ body {
   margin: 0;
   min-width: 320px;
   background:
-    radial-gradient(circle at top right, rgba(244, 114, 182, 0.16), transparent 22%),
-    radial-gradient(circle at 18% 18%, rgba(45, 212, 191, 0.08), transparent 18%),
-    linear-gradient(180deg, #040404 0%, #0c0810 42%, #040404 100%);
-  color: #f8fafc;
+    radial-gradient(circle at top right, var(--bg-top-right), transparent 22%),
+    radial-gradient(circle at 18% 18%, var(--bg-top-left), transparent 18%),
+    linear-gradient(180deg, var(--bg-gradient-start) 0%, var(--bg-gradient-mid) 42%, var(--bg-gradient-end) 100%);
+  color: var(--text-primary);
   font-family: var(--font-body);
 }
 
@@ -39,6 +74,6 @@ a {
 }
 
 ::selection {
-  background: rgba(45, 212, 191, 0.3);
-  color: #ffffff;
+  background: var(--selection-bg);
+  color: var(--selection-text);
 }

@@ -1,5 +1,7 @@
 import './globals.css'
 
+import { ThemeProvider } from '../components/theme-provider'
+
 export const metadata = {
   title: 'Krish Raj | Portfolio',
   description:
@@ -8,8 +10,12 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en">
-      <body>{children}</body>
+    <html lang="en" suppressHydrationWarning>
+      <body>
+        <ThemeProvider attribute="class" defaultTheme="dark" enableSystem={false}>
+          {children}
+        </ThemeProvider>
+      </body>
     </html>
   )
 }
