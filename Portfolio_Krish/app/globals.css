@@ -26,11 +26,11 @@
 }
 
 .dark {
-  --bg-top-right: rgba(244, 114, 182, 0.16);
-  --bg-top-left: rgba(45, 212, 191, 0.08);
-  --bg-gradient-start: #000000;
-  --bg-gradient-mid: #020202;
-  --bg-gradient-end: #030105;
+  --bg-top-right: rgba(139, 92, 246, 0.14);
+  --bg-top-left: rgba(45, 212, 191, 0.1);
+  --bg-gradient-start: #030014;
+  --bg-gradient-mid: #010005;
+  --bg-gradient-end: #0a0118;
 
   --text-primary: #f8fafc;
   

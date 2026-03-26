@@ -15,6 +15,7 @@ import {
 } from 'react-icons/si'
 import { VscVscode } from 'react-icons/vsc'
 import { ThemeToggle } from './ThemeToggle'
+import AntigravityBackground from './AntigravityBackground'
 
 const navItems = [
   { label: 'About', href: '#about' },
@@ -148,71 +149,6 @@ const typedHeroLines = [
   'digital experiences with precision.',
 ]
 
-const createStars = (count, baseSize, baseDuration) =>
-  Array.from({ length: count }).map((_, i) => ({
-    id: i,
-    x: (i * 13.57) % 100,
-    y: (i * 29.31) % 100,
-    size: baseSize + ((i * 7) % 10) * 0.015,
-    delay: (i * 11) % 5,
-    duration: baseDuration + ((i * 17) % 4),
-  }))
-
-const starsBg = createStars(60, 0.04, 6)
-const starsMid = createStars(40, 0.08, 4)
-const starsFg = createStars(20, 0.15, 2)
-
-function GridBackground({ mouseX, mouseY }) {
-  const smoothX = useSpring(mouseX, { stiffness: 45, damping: 25 })
-  const smoothY = useSpring(mouseY, { stiffness: 45, damping: 25 })
-
-  // 3-Layer Depth Parallax
-  const translateXBg = useTransform(smoothX, [-1, 1], [-6, 6])
-  const translateYBg = useTransform(smoothY, [-1, 1], [-6, 6])
-  const translateXMid = useTransform(smoothX, [-1, 1], [-18, 18])
-  const translateYMid = useTransform(smoothY, [-1, 1], [-18, 18])
-  const translateXFg = useTransform(smoothX, [-1, 1], [-45, 45])
-  const translateYFg = useTransform(smoothY, [-1, 1], [-45, 45])
-
-  return (
-    <div className="pointer-events-none fixed inset-0 z-[-1] h-[100vh] w-full overflow-hidden bg-transparent">
-      {/* Intense Glowing Nebulas */}
-      <motion.div
-        className="absolute left-[0%] top-[-10%] h-[50vh] w-[50vw] rounded-full bg-teal-500/15 blur-[120px]"
-        animate={{ opacity: [0.6, 0.9, 0.6], scale: [1, 1.1, 1] }}
-        transition={{ duration: 12, repeat: Infinity, ease: 'easeInOut' }}
-      />
-      <motion.div
-        className="absolute right-[-10%] top-[20%] h-[60vh] w-[50vw] rounded-full bg-pink-600/15 blur-[120px]"
-        animate={{ opacity: [0.5, 0.8, 0.5], scale: [1, 1.2, 1] }}
-        transition={{ duration: 15, repeat: Infinity, ease: 'easeInOut' }}
-      />
-
-      <div className="absolute inset-0 h-full w-full hidden dark:block">
-        {/* Background Layer (Tiny, Slow) */}
-        <motion.svg viewBox="0 0 100 100" preserveAspectRatio="none" className="absolute inset-0 h-full w-full" style={{ x: translateXBg, y: translateYBg, scale: 1.1 }}>
-          {starsBg.map((star) => (
-            <motion.circle key={`bg-${star.id}`} cx={star.x} cy={star.y} r={star.size} fill="#ffffff" animate={{ opacity: [0.1, 0.6, 0.1] }} transition={{ duration: star.duration, repeat: Infinity, ease: "easeInOut", delay: star.delay }} />
-          ))}
-        </motion.svg>
-
-        {/* Midground Layer (Medium) */}
-        <motion.svg viewBox="0 0 100 100" preserveAspectRatio="none" className="absolute inset-0 h-full w-full" style={{ x: translateXMid, y: translateYMid, scale: 1.15 }}>
-          {starsMid.map((star) => (
-            <motion.circle key={`mid-${star.id}`} cx={star.x} cy={star.y} r={star.size} fill="#ffffff" animate={{ opacity: [0.2, 0.8, 0.2] }} transition={{ duration: star.duration, repeat: Infinity, ease: "easeInOut", delay: star.delay }} />
-          ))}
-        </motion.svg>
-
-        {/* Foreground Layer (Large, Fast) */}
-        <motion.svg viewBox="0 0 100 100" preserveAspectRatio="none" className="absolute inset-0 h-full w-full" style={{ x: translateXFg, y: translateYFg, scale: 1.2 }}>
-          {starsFg.map((star) => (
-            <motion.circle key={`fg-${star.id}`} cx={star.x} cy={star.y} r={star.size} fill="#ffffff" animate={{ opacity: [0.4, 1, 0.4], scale: [0.8, 1.3, 0.8] }} transition={{ duration: star.duration, repeat: Infinity, ease: "easeInOut", delay: star.delay }} />
-          ))}
-        </motion.svg>
-      </div>
-    </div>
-  )
-}
 
 function OrbitArtwork() {
   return (
@@ -449,7 +385,7 @@ export default function PortfolioPage() {
         className={`relative isolate overflow-hidden ${showSplash ? 'max-h-screen overflow-hidden' : ''}`} 
         onMouseMove={handleMouseMove}
       >
-      <GridBackground mouseX={mouseX} mouseY={mouseY} />
+      <AntigravityBackground />
 
       <div className="pointer-events-none absolute inset-0 z-0 overflow-hidden">
         <motion.div
@@ -810,32 +746,33 @@ export default function PortfolioPage() {
               <motion.article
                 key={group.title}
                 {...cardHover}
-                className="rounded-[1.9rem] border border-slate-200 dark:border-white/8 bg-white/20 dark:bg-black/10 p-6 shadow-[inset_0_1px_0_rgba(0,0,0,0.05)] dark:shadow-[inset_0_1px_0_rgba(255,255,255,0.05)]"
+                className="overflow-hidden rounded-[1.75rem] border border-slate-200 dark:border-white/10 bg-gradient-to-b from-white/10 to-white/5 p-6 backdrop-blur-sm"
               >
                 <div className="flex items-center justify-between gap-4">
-                  <h3 className="text-xl font-bold text-slate-900 dark:text-white sm:text-2xl">
+                  <h3 className="text-xl font-bold tracking-tight text-slate-900 dark:text-white sm:text-2xl [font-family:var(--font-display)]">
                     {group.title}
                   </h3>
-                  <p className="text-xs uppercase tracking-[0.24em] text-slate-400">
+                  <span className="flex items-center justify-center rounded-full bg-slate-200/60 dark:bg-slate-950/60 px-3 py-1.5 text-[0.7rem] font-bold uppercase tracking-[0.1em] text-slate-600 dark:text-slate-300">
                     {group.items.length} items
-                  </p>
+                  </span>
                 </div>
-                <div className="mt-6 flex flex-wrap gap-2.5">
+                
+                <div className="relative z-10 mt-6 flex flex-wrap gap-2 text-slate-800 dark:text-slate-100">
                   {group.items.map((item) => (
                     <span
                       key={item}
-                      className="inline-flex items-center gap-3 rounded-full border border-slate-200 dark:border-white/8 bg-slate-100/50 dark:bg-white/[0.04] pl-2 pr-4 py-2 text-[0.8rem] sm:text-sm font-medium text-slate-800 dark:text-slate-100 shadow-[inset_0_1px_0_rgba(0,0,0,0.05)] dark:shadow-[inset_0_1px_0_rgba(255,255,255,0.03)]"
+                      className="inline-flex items-center gap-2 rounded-full border border-slate-200 dark:border-white/10 bg-slate-100/60 dark:bg-slate-950/60 px-3 py-1.5 text-sm transition-colors hover:bg-slate-200 dark:hover:bg-slate-900/80"
                     >
-                      <span className="inline-flex h-8 w-8 shrink-0 items-center justify-center rounded-full text-base bg-gradient-to-br from-teal-400 to-emerald-500 text-white shadow-[0_0_12px_rgba(45,212,191,0.65)] dark:from-teal-500 dark:to-emerald-600 dark:shadow-[0_0_14px_rgba(45,212,191,0.55)]">
-                        {skillIcons[item] ?? <span className="text-[0.8rem] font-bold uppercase tracking-[0.08em]">•</span>}
+                      <span className="text-[1.1em] shrink-0 text-amber-500 drop-shadow-sm dark:text-amber-300">
+                        {skillIcons[item] ?? '•'}
                       </span>
-                      {item}
+                      <span>{item}</span>
                     </span>
                   ))}
                 </div>
               </motion.article>
             ))}
-          </div>
+            </div>
           </div>
         </motion.section>
 
