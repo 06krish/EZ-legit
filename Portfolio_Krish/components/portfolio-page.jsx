@@ -1,7 +1,18 @@
 'use client'
 
+import Image from 'next/image'
 import { useEffect, useState } from 'react'
-import { motion } from 'framer-motion'
+import { motion, useMotionValue, useSpring, useTransform } from 'framer-motion'
+import { 
+  FaReact, FaNodeJs, FaDesktop, FaServer, FaCogs, FaCode, 
+  FaNetworkWired, FaBrain, FaGitAlt, FaGithub, FaJava
+} from 'react-icons/fa'
+import { 
+  SiNextdotjs, SiTailwindcss, SiJavascript, SiExpress, SiMongodb, 
+  SiAndroidstudio, SiKotlin, SiFramer, 
+  SiVercel, SiCplusplus, SiC
+} from 'react-icons/si'
+import { VscVscode } from 'react-icons/vsc'
 
 const navItems = [
   { label: 'About', href: '#about' },
@@ -10,63 +21,68 @@ const navItems = [
   { label: 'Contact', href: '#contact' },
 ]
 
-const socials = [
-  { name: 'LinkedIn', href: 'https://www.linkedin.com/in/krishraj3406' },
-  { name: 'GitHub', href: 'https://github.com/06krish' },
-  { name: 'Instagram', href: 'https://www.instagram.com/_06krish_' },
-]
-
-const socialIcons = {
-  LinkedIn: (
-    <svg viewBox="0 0 24 24" className="h-4 w-4 fill-current" aria-hidden="true">
-      <path d="M6.94 8.5H3.56V20h3.38V8.5ZM5.25 3A2.02 2.02 0 1 0 5.3 7.04 2.02 2.02 0 0 0 5.25 3Zm15.19 9.88c0-3.47-1.85-5.08-4.32-5.08-1.99 0-2.88 1.1-3.37 1.87V8.5H9.37c.04.77 0 11.5 0 11.5h3.38v-6.42c0-.34.03-.68.13-.93.27-.68.87-1.38 1.89-1.38 1.33 0 1.86 1.02 1.86 2.53V20H20v-6.91Z" />
-    </svg>
-  ),
-  GitHub: (
-    <svg viewBox="0 0 24 24" className="h-4 w-4 fill-current" aria-hidden="true">
-      <path d="M12 .5C5.65.5.5 5.78.5 12.29c0 5.2 3.3 9.6 7.88 11.15.58.11.79-.26.79-.58 0-.29-.01-1.05-.02-2.06-3.2.72-3.88-1.58-3.88-1.58-.52-1.36-1.28-1.72-1.28-1.72-1.04-.73.08-.72.08-.72 1.15.08 1.75 1.21 1.75 1.21 1.02 1.8 2.67 1.28 3.32.98.1-.76.4-1.28.72-1.57-2.56-.3-5.24-1.31-5.24-5.83 0-1.29.45-2.35 1.18-3.18-.12-.3-.51-1.5.11-3.13 0 0 .97-.32 3.18 1.22a10.7 10.7 0 0 1 5.8 0c2.2-1.54 3.17-1.22 3.17-1.22.63 1.63.24 2.83.12 3.13.73.83 1.17 1.89 1.17 3.18 0 4.53-2.68 5.52-5.24 5.82.41.37.78 1.1.78 2.22 0 1.6-.01 2.88-.01 3.27 0 .32.2.69.8.58A11.83 11.83 0 0 0 23.5 12.3C23.5 5.78 18.35.5 12 .5Z" />
-    </svg>
-  ),
-  Instagram: (
-    <svg viewBox="0 0 24 24" className="h-4 w-4 fill-current" aria-hidden="true">
-      <path d="M7.25 2h9.5A5.25 5.25 0 0 1 22 7.25v9.5A5.25 5.25 0 0 1 16.75 22h-9.5A5.25 5.25 0 0 1 2 16.75v-9.5A5.25 5.25 0 0 1 7.25 2Zm0 1.75A3.5 3.5 0 0 0 3.75 7.25v9.5a3.5 3.5 0 0 0 3.5 3.5h9.5a3.5 3.5 0 0 0 3.5-3.5v-9.5a3.5 3.5 0 0 0-3.5-3.5h-9.5Zm10 1.5a1.25 1.25 0 1 1 0 2.5 1.25 1.25 0 0 1 0-2.5ZM12 6.5A5.5 5.5 0 1 1 6.5 12 5.5 5.5 0 0 1 12 6.5Zm0 1.75A3.75 3.75 0 1 0 15.75 12 3.75 3.75 0 0 0 12 8.25Z" />
-    </svg>
-  ),
-}
-
+const iconClass = "h-3.5 w-3.5";
 const skillIcons = {
-  React: 'R',
-  'Next.js': 'N',
-  'Tailwind CSS': 'T',
-  JavaScript: 'JS',
-  'Responsive UI': 'UI',
-  'Node.js': 'ND',
-  'Express.js': 'EX',
-  MongoDB: 'DB',
-  'REST APIs': 'API',
-  'Backend Logic': 'BE',
-  'Android Studio': 'AS',
-  Kotlin: 'KT',
-  XML: 'XML',
-  'Data Structures': 'DS',
-  Algorithms: 'AL',
+  React: <FaReact className={iconClass} />,
+  'Next.js': <SiNextdotjs className={iconClass} />,
+  'Tailwind CSS': <SiTailwindcss className={iconClass} />,
+  JavaScript: <SiJavascript className={iconClass} />,
+  'Responsive UI': <FaDesktop className={iconClass} />,
+  'Node.js': <FaNodeJs className={iconClass} />,
+  'Express.js': <SiExpress className={iconClass} />,
+  MongoDB: <SiMongodb className={iconClass} />,
+  'REST APIs': <FaServer className={iconClass} />,
+  'Backend Logic': <FaCogs className={iconClass} />,
+  'Android Studio': <SiAndroidstudio className={iconClass} />,
+  Kotlin: <SiKotlin className={iconClass} />,
+  XML: <FaCode className={iconClass} />,
+  'Data Structures': <FaNetworkWired className={iconClass} />,
+  Algorithms: <FaBrain className={iconClass} />,
+  Git: <FaGitAlt className={iconClass} />,
+  GitHub: <FaGithub className={iconClass} />,
+  'Framer Motion': <SiFramer className={iconClass} />,
+  'VS Code': <VscVscode className={iconClass} />,
+  Vercel: <SiVercel className={iconClass} />,
+  'C++': <SiCplusplus className={iconClass} />,
+  Java: <FaJava className={iconClass} />,
+  C: <SiC className={iconClass} />,
 }
 
 const skillGroups = [
   {
+    title: 'Languages',
+    items: ['C++', 'Java', 'JavaScript', 'C'],
+  },
+  {
     title: 'Frontend',
-    copy: 'Modern React interfaces, responsive layouts, and polished component structure.',
     items: ['React', 'Next.js', 'Tailwind CSS', 'JavaScript', 'Responsive UI'],
   },
   {
     title: 'Backend',
-    copy: 'API design, database integration, and full-stack flows that stay maintainable.',
     items: ['Node.js', 'Express.js', 'MongoDB', 'REST APIs', 'Backend Logic'],
   },
   {
     title: 'Mobile + Core',
-    copy: 'Strong problem solving with Android experience and practical CS fundamentals.',
     items: ['Android Studio', 'Kotlin', 'XML', 'Data Structures', 'Algorithms'],
+  },
+  {
+    title: 'Workflow',
+    items: ['Git', 'GitHub', 'Framer Motion', 'VS Code', 'Vercel'],
+  },
+]
+
+const aboutFocusAreas = ['Backend Systems', 'Distributed Design', 'Developer Experience']
+
+const aboutPrinciples = [
+  {
+    title: 'Clean Architecture',
+    copy: 'Clear boundaries, explicit contracts, and code that stays easy to extend.',
+    icon: 'code',
+  },
+  {
+    title: 'Performance',
+    copy: 'Latency-aware decisions and predictable systems that feel fast in real use.',
+    icon: 'bolt',
   },
 ]
 
@@ -175,7 +191,14 @@ const particleLinks = [
 
 const particleMap = Object.fromEntries(backgroundParticles.map((particle) => [particle.id, particle]))
 
-function GridBackground() {
+function GridBackground({ mouseX, mouseY }) {
+  const smoothX = useSpring(mouseX, { stiffness: 45, damping: 25 })
+  const smoothY = useSpring(mouseY, { stiffness: 45, damping: 25 })
+
+  // Parallax shifts
+  const translateX = useTransform(smoothX, [-1, 1], [-25, 25])
+  const translateY = useTransform(smoothY, [-1, 1], [-25, 25])
+
   return (
     <div className="pointer-events-none absolute inset-0 overflow-hidden opacity-75">
       <motion.div
@@ -192,14 +215,15 @@ function GridBackground() {
         viewBox="0 0 100 100"
         preserveAspectRatio="none"
         className="absolute inset-0 h-full w-full"
-        animate={{ opacity: [0.5, 0.72, 0.56] }}
+        style={{ x: translateX, y: translateY, scale: 1.15 }}
+        animate={{ opacity: [0.5, 0.82, 0.56] }}
         transition={{ duration: 10, repeat: Infinity, ease: 'easeInOut' }}
       >
         <defs>
           <linearGradient id="particleLine" x1="0%" y1="0%" x2="100%" y2="0%">
-            <stop offset="0%" stopColor="rgba(45,212,191,0.16)" />
-            <stop offset="50%" stopColor="rgba(255,255,255,0.09)" />
-            <stop offset="100%" stopColor="rgba(244,114,182,0.22)" />
+            <stop offset="0%" stopColor="rgba(45,212,191,0.2)" />
+            <stop offset="50%" stopColor="rgba(255,255,255,0.15)" />
+            <stop offset="100%" stopColor="rgba(244,114,182,0.25)" />
           </linearGradient>
           <radialGradient id="particleGlow" cx="50%" cy="50%" r="50%">
             <stop offset="0%" stopColor="rgba(255,255,255,0.96)" />
@@ -214,17 +238,26 @@ function GridBackground() {
 
           return (
             <g key={`${from}-${to}`}>
-              <line
+              <motion.line
                 x1={start.x}
                 y1={start.y}
                 x2={end.x}
                 y2={end.y}
                 stroke="url(#particleLine)"
-                strokeWidth="0.16"
+                animate={{
+                  opacity: [0.2, 0.9, 0.2],
+                  strokeWidth: [0.12, 0.25, 0.12],
+                }}
+                transition={{
+                  duration: 2.5 + (index % 4) * 0.5,
+                  repeat: Infinity,
+                  ease: 'easeInOut',
+                  delay: index * 0.2,
+                }}
               />
               <motion.circle
                 r="0.26"
-                fill={index % 2 === 0 ? 'rgba(45,212,191,0.78)' : 'rgba(244,114,182,0.82)'}
+                fill={index % 2 === 0 ? 'rgba(45,212,191,0.85)' : 'rgba(244,114,182,0.88)'}
                 animate={{
                   cx: [start.x, end.x],
                   cy: [start.y, end.y],
@@ -399,10 +432,50 @@ function SectionTitle({ eyebrow, title, copy }) {
   )
 }
 
+function AboutCardIcon({ type }) {
+  if (type === 'bolt') {
+    return (
+      <svg viewBox="0 0 24 24" className="h-7 w-7 stroke-current" fill="none" aria-hidden="true">
+        <path
+          d="M13 2 4 14h6l-1 8 11-14h-6l1-6Z"
+          strokeWidth="1.8"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        />
+      </svg>
+    )
+  }
+
+  return (
+    <svg viewBox="0 0 24 24" className="h-7 w-7 stroke-current" fill="none" aria-hidden="true">
+      <path
+        d="M8 8 4 12l4 4M16 8l4 4-4 4M14 4l-4 16"
+        strokeWidth="1.8"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+    </svg>
+  )
+}
+
 export default function PortfolioPage() {
   const fullTypedText = typedHeroLines.join('\n')
   const [typedText, setTypedText] = useState('')
   const [isDeleting, setIsDeleting] = useState(false)
+
+  // Mouse tracking for parallax
+  const mouseX = useMotionValue(0)
+  const mouseY = useMotionValue(0)
+
+  const handleMouseMove = (e) => {
+    if (typeof window === 'undefined') return
+    const { clientX, clientY } = e
+    const { innerWidth, innerHeight } = window
+    const x = (clientX / innerWidth) * 2 - 1
+    const y = (clientY / innerHeight) * 2 - 1
+    mouseX.set(x)
+    mouseY.set(y)
+  }
 
   useEffect(() => {
     const isComplete = typedText === fullTypedText
@@ -437,8 +510,8 @@ export default function PortfolioPage() {
   const renderedHeroLines = typedText.split('\n')
 
   return (
-    <main className="relative isolate overflow-hidden">
-      <GridBackground />
+    <main className="relative isolate overflow-hidden" onMouseMove={handleMouseMove}>
+      <GridBackground mouseX={mouseX} mouseY={mouseY} />
 
       <div className="pointer-events-none absolute inset-0 z-0 overflow-hidden">
         <motion.div
@@ -527,9 +600,9 @@ export default function PortfolioPage() {
         id="top"
         className="relative z-10 mx-auto grid min-h-screen max-w-7xl items-center gap-10 px-5 pb-16 pt-28 sm:px-8 sm:pt-32 lg:grid-cols-[minmax(0,0.92fr)_minmax(26rem,1.08fr)] lg:px-10 lg:pb-24 lg:pt-36"
       >
-        <motion.div {...fadeUp} className="relative z-10">
+        <motion.div {...fadeUp} className="relative z-10 -mt-4 sm:-mt-6 lg:-mt-8">
           <motion.div
-            className="mb-6 inline-flex rounded-full border border-teal-300/20 bg-teal-300/10 px-4 py-2 text-[0.78rem] font-bold uppercase tracking-[0.32em] text-teal-200 sm:text-[0.82rem]"
+            className="mb-6 inline-flex rounded-full border border-teal-300/20 bg-teal-300/10 px-4 py-2 text-[0.92rem] font-bold uppercase tracking-[0.32em] text-teal-200 sm:text-[1rem]"
             animate={{
               y: [0, -4, 0],
               boxShadow: [
@@ -577,13 +650,13 @@ export default function PortfolioPage() {
             </span>
             <span className="ml-1 inline-block h-[0.85em] w-[2px] translate-y-1 bg-teal-300 align-baseline animate-pulse" />
           </h1>
-          <p className="mt-6 max-w-2xl text-base leading-8 text-slate-300 sm:text-lg">
+          <p className="mt-4 max-w-2xl text-base leading-8 text-slate-300 sm:text-lg">
             I build modern web experiences with React and Next.js, backend systems with
             Node.js and MongoDB, and user interfaces that feel clean, polished, and
             reliable across devices.
           </p>
 
-          <div className="mt-10 flex flex-col gap-4 sm:flex-row">
+          <div className="mt-6 flex flex-col gap-3 sm:flex-row">
             <motion.a
               href="/Krish-Raj-Resume.pdf"
               download
@@ -613,24 +686,7 @@ export default function PortfolioPage() {
             </motion.a>
           </div>
 
-          <div className="mt-10 flex flex-wrap gap-3">
-            {socials.map((item) => (
-              <motion.a
-                key={item.name}
-                href={item.href}
-                target="_blank"
-                rel="noreferrer"
-                className="rounded-full border border-white/10 bg-white/5 px-4 py-2 text-sm text-slate-200 transition hover:border-rose-300/40 hover:bg-white/10"
-                {...buttonHover}
-              >
-                <span className="inline-flex items-center gap-2">
-                  <span className="text-pink-200">{socialIcons[item.name]}</span>
-                  <span>{item.name}</span>
-                </span>
-              </motion.a>
-            ))}
-          </div>
-          <div className="mt-10 grid gap-4 sm:grid-cols-3">
+          <div className="mt-7 grid gap-4 sm:grid-cols-3">
             <motion.div
               className="rounded-[1.5rem] border border-teal-300/18 bg-teal-300/8 p-5 shadow-[inset_0_1px_0_rgba(45,212,191,0.08)]"
               {...cardHover}
@@ -666,55 +722,162 @@ export default function PortfolioPage() {
       </section>
 
       <div className="relative z-10 mx-auto flex max-w-7xl flex-col gap-24 px-5 pb-20 sm:px-8 lg:px-10">
-        <motion.section {...fadeUp} id="about" className="rounded-[2rem] border border-white/10 bg-white/5 p-8 backdrop-blur-xl sm:p-10">
-          <SectionTitle
-            eyebrow="About"
-            title="I build software that looks polished, works reliably, and feels intentional."
-            copy="My work blends frontend design, backend logic, and mobile development. I enjoy turning practical ideas into products with clean architecture, strong usability, and visuals that do not feel generic."
-          />
+        <motion.section
+          {...fadeUp}
+          id="about"
+          className="relative overflow-hidden rounded-[2.2rem] border border-white/10 bg-white/5 px-6 py-8 shadow-[0_30px_80px_rgba(0,0,0,0.35)] backdrop-blur-xl sm:px-8 sm:py-10 lg:px-10"
+        >
+          <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(rgba(148,163,184,0.05)_1px,transparent_1px),linear-gradient(90deg,rgba(148,163,184,0.05)_1px,transparent_1px)] bg-[size:14px_14px] opacity-70" />
+          <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(45,212,191,0.08),transparent_24%),radial-gradient(circle_at_top_right,rgba(244,114,182,0.08),transparent_28%),linear-gradient(180deg,rgba(255,255,255,0.02),transparent_40%)]" />
 
-          <div className="mt-10 grid gap-4 lg:grid-cols-3">
-            {[
-              'Full-stack development with modern React architecture.',
-              'Backend systems with API design and database integration.',
-              'Android development backed by strong CS fundamentals.',
-            ].map((item) => (
-              <div
-                key={item}
-                className="rounded-3xl border border-white/10 bg-slate-950/50 p-5 text-slate-200"
-              >
-                {item}
+          <div className="relative z-10">
+            <div className="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
+              <div>
+                <h2 className="text-4xl font-black tracking-tight text-white sm:text-5xl [font-family:var(--font-display)]">
+                  About Me
+                </h2>
+                <div className="mt-5 h-px w-full max-w-4xl bg-gradient-to-r from-teal-300/60 via-pink-400/35 to-transparent" />
               </div>
-            ))}
+              <p className="text-xs font-medium uppercase tracking-[0.32em] text-slate-500">
+                Philosophy
+              </p>
+            </div>
+
+            <div className="mt-10 grid gap-5 lg:grid-cols-[minmax(0,1.06fr)_minmax(280px,0.52fr)]">
+              <div className="grid gap-5">
+                <div className="rounded-[2rem] border border-white/8 bg-black/40 p-7 shadow-[inset_0_1px_0_rgba(255,255,255,0.04)] sm:p-8">
+                  <p className="max-w-4xl text-2xl font-bold leading-[1.55] text-white sm:text-[2rem]">
+                    I build reliable software with clarity, performance, and purpose.
+                  </p>
+                  <p className="mt-8 max-w-3xl text-lg leading-9 text-slate-400">
+                    I work across backend and full-stack projects with a strong focus on clean
+                    code and user experience.
+                  </p>
+                  <p className="mt-6 text-lg italic text-slate-500">
+                    Correctness over cleverness. Reliability over shortcuts.
+                  </p>
+
+                  <div className="mt-7 flex flex-wrap gap-3">
+                    {aboutFocusAreas.map((item) => (
+                      <span
+                        key={item}
+                        className="rounded-full border border-white/10 bg-white/[0.04] px-4 py-2 text-sm text-slate-200"
+                      >
+                        {item}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+
+                <div className="grid gap-5 md:grid-cols-2">
+                  {aboutPrinciples.map((item) => (
+                    <motion.article
+                      key={item.title}
+                      {...cardHover}
+                      className="rounded-[1.9rem] border border-white/8 bg-black/38 p-6 shadow-[inset_0_1px_0_rgba(255,255,255,0.04)]"
+                    >
+                      <div className="flex items-start gap-4">
+                        <div className="mt-1 flex h-10 w-10 items-center justify-center rounded-xl text-teal-300">
+                          <AboutCardIcon type={item.icon} />
+                        </div>
+                        <div>
+                          <h3 className="text-2xl font-bold text-white">{item.title}</h3>
+                          <p className="mt-3 text-lg leading-8 text-slate-400">{item.copy}</p>
+                        </div>
+                      </div>
+                    </motion.article>
+                  ))}
+                </div>
+              </div>
+
+              <motion.div
+                {...cardHover}
+                className="relative min-h-[32rem] overflow-hidden rounded-[2rem] border border-white/10 bg-[radial-gradient(circle_at_50%_18%,rgba(255,255,255,0.16),transparent_26%),radial-gradient(circle_at_85%_18%,rgba(45,212,191,0.12),transparent_20%),linear-gradient(180deg,#c9d8ee_0%,#dce4ef_24%,#8da0aa_58%,#171d27_100%)]"
+              >
+                <div className="absolute inset-0">
+                  <Image
+                    src="/profile.jpeg"
+                    alt="Krish Raj portrait background"
+                    fill
+                    className="scale-110 object-cover blur-2xl"
+                  />
+                </div>
+                <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_16%,rgba(255,255,255,0.28),transparent_22%),radial-gradient(circle_at_82%_18%,rgba(45,212,191,0.18),transparent_24%),linear-gradient(180deg,rgba(10,12,18,0.05)_0%,rgba(10,12,18,0.25)_45%,rgba(5,8,10,0.88)_100%)]" />
+
+                <div className="absolute inset-x-6 top-6 bottom-28 overflow-hidden rounded-[1.7rem] border border-white/15 bg-black/20 shadow-[0_24px_60px_rgba(2,6,23,0.35)]">
+                  <Image
+                    src="/profile.jpeg"
+                    alt="Krish Raj"
+                    fill
+                    className="object-cover object-center"
+                  />
+                  <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(255,255,255,0.04),transparent_28%,rgba(2,6,23,0.18)_78%,rgba(2,6,23,0.3)_100%)]" />
+                </div>
+
+                <div className="absolute inset-x-0 bottom-0 p-6">
+                  <div className="rounded-[1.5rem] border border-white/10 bg-black/36 p-5 backdrop-blur-sm">
+                    <p className="text-xs font-semibold uppercase tracking-[0.32em] text-teal-300">
+                      Krish Raj
+                    </p>
+                    <p className="mt-3 text-2xl font-bold text-white">Software Developer</p>
+                    <p className="mt-3 text-sm leading-7 text-slate-300">
+                      Building clean, responsive, and user-focused digital experiences.
+                    </p>
+                  </div>
+                </div>
+              </motion.div>
+            </div>
           </div>
         </motion.section>
 
-        <motion.section {...fadeUp} id="skills" className="rounded-[2rem] border border-white/10 bg-white/5 p-8 backdrop-blur-xl sm:p-10">
-          <SectionTitle
-            eyebrow="Skills"
-            title="The tools I use to shape modern web and mobile products."
-            copy="I like working across the stack, but I care especially about how the final experience feels: fast, clean, expressive, and maintainable."
-          />
+        <motion.section
+          {...fadeUp}
+          id="skills"
+          className="relative overflow-hidden rounded-[2.2rem] border border-white/10 bg-white/5 p-8 backdrop-blur-xl sm:p-10"
+        >
+          <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(rgba(148,163,184,0.06)_1px,transparent_1px),linear-gradient(90deg,rgba(148,163,184,0.06)_1px,transparent_1px)] bg-[size:16px_16px] opacity-35" />
+          <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(45,212,191,0.08),transparent_24%),radial-gradient(circle_at_top_right,rgba(244,114,182,0.08),transparent_28%),linear-gradient(180deg,rgba(255,255,255,0.02),transparent_44%)]" />
+          <div className="pointer-events-none absolute -left-10 top-0 h-48 w-48 bg-teal-300/10 blur-3xl" />
+          <div className="pointer-events-none absolute right-0 top-10 h-56 w-56 bg-pink-400/10 blur-3xl" />
 
-          <div className="mt-10 grid gap-5 lg:grid-cols-3">
+          <div className="relative z-10">
+            <div className="flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
+              <div>
+                <p className="text-xs font-semibold uppercase tracking-[0.35em] text-teal-300">
+                  Skills
+                </p>
+                <h2 className="mt-4 text-3xl font-bold tracking-tight text-white sm:text-4xl [font-family:var(--font-display)]">
+                  Capability Matrix
+                </h2>
+              </div>
+              <p className="text-xs uppercase tracking-[0.3em] text-slate-400">
+                Selected Stack
+              </p>
+            </div>
+
+            <div className="mt-10 grid gap-5 lg:grid-cols-2">
             {skillGroups.map((group) => (
               <motion.article
                 key={group.title}
                 {...cardHover}
-                className="rounded-[1.75rem] border border-white/10 bg-slate-950/60 p-6 shadow-lg shadow-slate-950/30"
+                className="rounded-[1.9rem] border border-white/8 bg-black/30 p-6 shadow-[inset_0_1px_0_rgba(255,255,255,0.05)]"
               >
-                <p className="text-xs font-semibold uppercase tracking-[0.32em] text-teal-300">
-                  {group.title}
-                </p>
-                <p className="mt-4 text-base leading-7 text-slate-300">{group.copy}</p>
-                <div className="mt-6 flex flex-wrap gap-2">
+                <div className="flex items-center justify-between gap-4">
+                  <h3 className="text-xl font-bold text-white sm:text-2xl">
+                    {group.title}
+                  </h3>
+                  <p className="text-xs uppercase tracking-[0.24em] text-slate-400">
+                    {group.items.length} items
+                  </p>
+                </div>
+                <div className="mt-6 flex flex-wrap gap-2.5">
                   {group.items.map((item) => (
                     <span
                       key={item}
-                      className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-3 py-2 text-sm text-slate-100"
+                      className="inline-flex items-center gap-2 rounded-full border border-white/8 bg-white/[0.04] px-3 py-2 text-xs font-medium text-slate-100 shadow-[inset_0_1px_0_rgba(255,255,255,0.03)]"
                     >
-                      <span className="inline-flex h-6 min-w-6 items-center justify-center rounded-full bg-pink-500/15 px-1.5 text-[0.62rem] font-bold uppercase text-pink-200">
-                        {skillIcons[item] ?? '•'}
+                      <span className="inline-flex h-6 w-6 items-center justify-center rounded-full bg-gradient-to-br from-teal-300/20 to-rose-300/20 text-teal-100 shadow-[inset_0_1px_3px_rgba(45,212,191,0.25)]">
+                        {skillIcons[item] ?? <span className="text-[0.6rem] font-bold uppercase tracking-[0.08em]">•</span>}
                       </span>
                       {item}
                     </span>
@@ -722,6 +885,7 @@ export default function PortfolioPage() {
                 </div>
               </motion.article>
             ))}
+          </div>
           </div>
         </motion.section>
 
