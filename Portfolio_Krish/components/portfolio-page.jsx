@@ -83,6 +83,7 @@ const projects = [
     copy:
       'A cinematic personal site that combines motion, bold layouts, and clear storytelling for web and mobile.',
     stack: ['Next.js', 'React', 'Framer Motion', 'Tailwind CSS'],
+    github: null,
   },
   {
     title: 'Backend API System',
@@ -90,13 +91,16 @@ const projects = [
     copy:
       'A backend-focused build with structured routes, data models, and scalable service logic.',
     stack: ['Node.js', 'Express', 'MongoDB'],
+    github: null,
   },
   {
-    title: 'Android App Concept',
+    title: 'SkyNote',
     tag: 'Mobile',
     copy:
-      'A native app flow designed for smooth usability, practical features, and clean mobile UI.',
+      'A voice-to-text Android app that lets you record, transcribe, and save notes hands-free. Built with a clean minimal UI and real-time speech recognition.',
     stack: ['Kotlin', 'XML', 'Android Studio'],
+    github: 'https://github.com/06krish/skynote', // 🔁 Replace with your actual repo URL
+    
   },
 ]
 
@@ -520,10 +524,10 @@ export default function PortfolioPage() {
           <h1 className="mt-4 max-w-3xl text-[1.7rem] leading-[1.12] tracking-[-0.02em] text-slate-900 dark:text-white sm:text-[2.1rem] lg:text-[2.5rem] [font-family:var(--font-hero)]">
             {renderedHeroLines[0] ?? ''}
             <br />
-            <span className="bg-gradient-to-r from-teal-300 via-white to-rose-300 bg-clip-text text-transparent">
+            <span className="bg-gradient-to-r from-teal-600 via-slate-800 to-rose-500 dark:from-teal-300 dark:via-white dark:to-rose-300 bg-clip-text text-transparent">
               {renderedHeroLines[1] ?? ''}
             </span>
-            <span className="ml-1 inline-block h-[0.85em] w-[2px] translate-y-1 bg-teal-300 align-baseline animate-pulse" />
+            <span className="ml-1 inline-block h-[0.85em] w-[2px] translate-y-1 bg-teal-600 dark:bg-teal-300 align-baseline animate-pulse" />
           </h1>
           <p className="mt-4 max-w-2xl text-base leading-8 text-slate-600 dark:text-slate-300 sm:text-lg">
             I build modern web experiences with React and Next.js, backend systems with
@@ -535,7 +539,7 @@ export default function PortfolioPage() {
             <motion.a
               href="/Krish-Raj-Resume.pdf"
               download
-              className="group relative inline-flex min-h-14 items-center justify-center overflow-hidden rounded-lg border border-pink-400/25 bg-pink-500/10 px-6 py-3 text-sm font-semibold text-pink-100 transition"
+              className="group relative inline-flex min-h-14 items-center justify-center overflow-hidden rounded-lg border border-pink-400/25 bg-pink-500/10 px-6 py-3 text-sm font-semibold text-pink-700 dark:text-pink-100 transition"
               {...buttonHover}
             >
               <span className="absolute inset-0 bg-gradient-to-r from-pink-500 to-rose-500 opacity-0 transition duration-300 group-hover:opacity-100" />
@@ -637,15 +641,17 @@ export default function PortfolioPage() {
           className="relative z-10 pt-4 scroll-mt-28"
         >
           <div className="relative z-10">
-            <div className="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
+            <div className="flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
               <div>
-                <h2 className="text-4xl font-black tracking-tight text-slate-900 dark:text-white sm:text-5xl [font-family:var(--font-display)]">
-                  About Me
+                <p className="text-xs font-semibold uppercase tracking-[0.35em] text-teal-600 dark:text-teal-300">
+                  About
+                </p>
+                <h2 className="mt-4 text-3xl font-bold tracking-tight text-slate-900 dark:text-white sm:text-4xl [font-family:var(--font-display)]">
+                  Philosophy
                 </h2>
-                <div className="mt-5 h-px w-full max-w-4xl bg-gradient-to-r from-teal-300/60 via-pink-400/35 to-transparent" />
               </div>
-              <p className="text-xs font-medium uppercase tracking-[0.32em] text-slate-500">
-                Philosophy
+              <p className="text-xs uppercase tracking-[0.3em] text-slate-500 dark:text-slate-400">
+                Core Beliefs
               </p>
             </div>
 
@@ -653,13 +659,14 @@ export default function PortfolioPage() {
               {/* Main Intro Span 2 */}
               <motion.div
                 {...cardHover}
-                className="flex flex-col justify-between rounded-[2rem] border border-slate-200 dark:border-white/8 bg-white/20 dark:bg-black/10 p-8 shadow-[inset_0_1px_0_rgba(0,0,0,0.05)] dark:shadow-[inset_0_1px_0_rgba(255,255,255,0.04)] lg:col-span-2"
+                className="flex flex-col justify-between rounded-[2rem] border border-white/60 dark:border-white/10 bg-white/60 dark:bg-white/[0.04] p-8 shadow-[0_8px_30px_rgb(0,0,0,0.04)] dark:shadow-[0_8px_30px_rgb(0,0,0,0.2)] backdrop-blur-xl lg:col-span-2"
               >
                 <div>
-                  <p className="max-w-xl text-3xl font-bold leading-[1.3] text-slate-900 dark:text-white sm:text-4xl">
+                  <h3 className="text-sm font-semibold uppercase tracking-[0.2em] text-teal-600 dark:text-teal-500">My Approach</h3>
+                  <p className="mt-6 max-w-xl text-3xl font-bold leading-[1.3] text-slate-900 dark:text-white sm:text-4xl">
                     I build reliable software with clarity, performance, and purpose.
                   </p>
-                  <p className="mt-6 max-w-2xl text-[1.1rem] leading-[1.8] text-slate-600 dark:text-slate-400">
+                  <p className="mt-6 max-w-2xl text-[1.1rem] leading-[1.8] text-slate-700 dark:text-slate-400">
                     I work across backend and full-stack projects with a strong focus on clean
                     code and user experience. My core belief is that correctness should always overrule cleverness, and reliability over shortcuts.
                   </p>
@@ -668,7 +675,7 @@ export default function PortfolioPage() {
                   {aboutFocusAreas.map((item) => (
                     <span
                       key={item}
-                      className="rounded-xl border border-slate-200 dark:border-white/10 bg-white/40 dark:bg-white/[0.04] px-4 py-2.5 text-[0.8rem] font-semibold tracking-wide text-slate-700 dark:text-slate-200"
+                      className="rounded-xl border border-slate-200 dark:border-white/10 bg-white/40 dark:bg-white/[0.04] px-4 py-2.5 text-[0.8rem] font-semibold tracking-wide text-slate-800 dark:text-slate-200"
                     >
                       {item}
                     </span>
@@ -701,16 +708,16 @@ export default function PortfolioPage() {
               {/* Education & Bio */}
               <motion.article
                 {...cardHover}
-                className="flex flex-col justify-center rounded-[2rem] border border-slate-200 dark:border-white/8 bg-white/20 dark:bg-black/10 p-8 shadow-[inset_0_1px_0_rgba(0,0,0,0.05)] dark:shadow-[inset_0_1px_0_rgba(255,255,255,0.04)] lg:col-span-3"
+                className="flex flex-col justify-center rounded-[2rem] border border-white/60 dark:border-white/10 bg-white/60 dark:bg-white/[0.04] p-8 shadow-[0_8px_30px_rgb(0,0,0,0.04)] dark:shadow-[0_8px_30px_rgb(0,0,0,0.2)] backdrop-blur-xl lg:col-span-3"
               >
                 <div className="flex flex-col md:flex-row gap-8 md:items-center">
                   <div className="flex-1">
-                    <h3 className="text-sm font-semibold uppercase tracking-[0.2em] text-teal-500">Education</h3>
+                    <h3 className="text-sm font-semibold uppercase tracking-[0.2em] text-teal-600 dark:text-teal-500">Education</h3>
                     <p className="mt-2 text-2xl font-bold text-slate-900 dark:text-white [font-family:var(--font-display)]">Lovely Professional University</p>
                   </div>
                   <div className="h-px w-full bg-slate-200 dark:bg-white/10 md:h-20 md:w-px" />
                   <div className="flex-[2]">
-                    <h3 className="text-sm font-semibold uppercase tracking-[0.2em] text-pink-500">Interests & Goals</h3>
+                    <h3 className="text-sm font-semibold uppercase tracking-[0.2em] text-pink-600 dark:text-pink-500">Interests & Goals</h3>
                     <p className="mt-2 text-[1.05rem] leading-relaxed text-slate-600 dark:text-slate-300">
                       Currently deeply interested in <strong className="font-semibold text-slate-900 dark:text-white">problem solving</strong> and <strong className="font-semibold text-slate-900 dark:text-white">software engineering</strong>. I am always looking forward to new opportunities to grow and build impactful technical products.
                     </p>
@@ -729,14 +736,14 @@ export default function PortfolioPage() {
           <div className="relative z-10">
             <div className="flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
               <div>
-                <p className="text-xs font-semibold uppercase tracking-[0.35em] text-teal-300">
+                <p className="text-xs font-semibold uppercase tracking-[0.35em] text-teal-600 dark:text-teal-300">
                   Skills
                 </p>
                 <h2 className="mt-4 text-3xl font-bold tracking-tight text-slate-900 dark:text-white sm:text-4xl [font-family:var(--font-display)]">
                   Capability Matrix
                 </h2>
               </div>
-              <p className="text-xs uppercase tracking-[0.3em] text-slate-400">
+              <p className="text-xs uppercase tracking-[0.3em] text-slate-500 dark:text-slate-400">
                 Selected Stack
               </p>
             </div>
@@ -746,7 +753,7 @@ export default function PortfolioPage() {
               <motion.article
                 key={group.title}
                 {...cardHover}
-                className="overflow-hidden rounded-[1.75rem] border border-slate-200 dark:border-white/10 bg-gradient-to-b from-white/10 to-white/5 p-6 backdrop-blur-sm"
+                className="overflow-hidden rounded-[1.9rem] border border-white/60 dark:border-white/10 bg-white/60 dark:bg-white/[0.04] p-6 shadow-[0_8px_30px_rgb(0,0,0,0.04)] dark:shadow-[0_8px_30px_rgb(0,0,0,0.2)] backdrop-blur-xl"
               >
                 <div className="flex items-center justify-between gap-4">
                   <h3 className="text-xl font-bold tracking-tight text-slate-900 dark:text-white sm:text-2xl [font-family:var(--font-display)]">
@@ -791,25 +798,44 @@ export default function PortfolioPage() {
               <motion.article
                 key={project.title}
                 {...cardHover}
-                className="overflow-hidden rounded-[1.75rem] border border-slate-200 dark:border-white/10 bg-gradient-to-b from-white/10 to-white/5 p-6"
+                className="overflow-hidden rounded-[1.75rem] border border-slate-200 dark:border-white/10 bg-gradient-to-b from-white/10 to-white/5 p-6 flex flex-col justify-between"
               >
-                <p className="text-xs font-semibold uppercase tracking-[0.32em] text-rose-300">
-                  {project.tag}
-                </p>
-                <h3 className="mt-4 text-2xl font-bold text-slate-900 dark:text-white [font-family:var(--font-display)]">
-                  {project.title}
-                </h3>
-                <p className="mt-4 text-base leading-7 text-slate-600 dark:text-slate-300">{project.copy}</p>
-                <div className="mt-6 flex flex-wrap gap-2">
-                  {project.stack.map((item) => (
-                    <span
-                      key={item}
-                      className="rounded-full border border-slate-200 dark:border-white/10 bg-slate-100/60 dark:bg-slate-950/60 px-3 py-2 text-sm text-slate-100"
-                    >
-                      {item}
-                    </span>
-                  ))}
+                <div>
+                  <p className="text-xs font-semibold uppercase tracking-[0.32em] text-rose-300">
+                    {project.tag}
+                  </p>
+                  <h3 className="mt-4 text-2xl font-bold text-slate-900 dark:text-white [font-family:var(--font-display)]">
+                    {project.title}
+                  </h3>
+                  <p className="mt-4 text-base leading-7 text-slate-600 dark:text-slate-300">
+                    {project.copy}
+                  </p>
+                  <div className="mt-6 flex flex-wrap gap-2">
+                    {project.stack.map((item) => (
+                      <span
+                        key={item}
+                        className="rounded-full border border-slate-200 dark:border-white/10 bg-slate-100/60 dark:bg-slate-950/60 px-3 py-2 text-sm text-slate-700 dark:text-slate-100"
+                      >
+                        {item}
+                      </span>
+                    ))}
+                  </div>
                 </div>
+
+                {project.github && (
+                  <motion.a
+                    href={project.github}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="mt-6 inline-flex items-center gap-2.5 self-start rounded-xl border border-white/10 bg-slate-900 dark:bg-white/10 px-4 py-2.5 text-sm font-semibold text-white transition hover:bg-slate-700 dark:hover:bg-white/20"
+                    whileHover={{ y: -2, scale: 1.02 }}
+                    whileTap={{ scale: 0.97 }}
+                    transition={{ duration: 0.16 }}
+                  >
+                    <FaGithub className="h-4 w-4" />
+                    Review Code
+                  </motion.a>
+                )}
               </motion.article>
             ))}
           </div>
