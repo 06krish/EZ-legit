@@ -992,15 +992,15 @@ export default function PortfolioPage() {
                     href={project.github}
                     target="_blank"
                     rel="noreferrer"
-                    className="group/button relative mt-6 inline-flex items-center gap-2.5 self-start overflow-hidden rounded-xl border border-slate-900/10 bg-slate-900 px-4 py-2.5 text-sm font-semibold text-white transition dark:border-white/10 dark:bg-white/10"
+                    className="group/button relative mt-6 inline-flex items-center gap-2.5 self-start overflow-hidden rounded-xl border border-teal-300/40 bg-gradient-to-r from-teal-500/90 via-cyan-500/85 to-emerald-500/90 px-4 py-2.5 text-sm font-semibold text-white shadow-[0_14px_28px_rgba(20,184,166,0.22)] transition dark:border-white/10 dark:bg-white/10 dark:shadow-none"
                     whileHover={{ y: -3, scale: 1.03 }}
                     whileTap={{ scale: 0.97 }}
                     transition={{ duration: 0.2 }}
                   >
-                    <span className="absolute inset-0 bg-[linear-gradient(120deg,rgba(45,212,191,0)_0%,rgba(45,212,191,0.18)_35%,rgba(255,255,255,0.28)_50%,rgba(244,114,182,0.18)_68%,rgba(244,114,182,0)_100%)] opacity-0 transition duration-300 group-hover/button:opacity-100" />
+                    <span className="absolute inset-0 bg-[linear-gradient(120deg,rgba(255,255,255,0)_0%,rgba(255,255,255,0.24)_35%,rgba(255,255,255,0.34)_50%,rgba(255,255,255,0.16)_68%,rgba(255,255,255,0)_100%)] opacity-0 transition duration-300 group-hover/button:opacity-100 dark:bg-[linear-gradient(120deg,rgba(45,212,191,0)_0%,rgba(45,212,191,0.18)_35%,rgba(255,255,255,0.28)_50%,rgba(244,114,182,0.18)_68%,rgba(244,114,182,0)_100%)]" />
                     <motion.span
                       aria-hidden="true"
-                      className="absolute inset-y-0 -left-1/3 w-1/3 bg-white/20 blur-md"
+                      className="absolute inset-y-0 -left-1/3 w-1/3 bg-white/25 blur-md"
                       initial={{ x: '-120%' }}
                       whileHover={{ x: '380%' }}
                       transition={{ duration: 0.7, ease: 'easeInOut' }}
@@ -1101,10 +1101,10 @@ export default function PortfolioPage() {
                 <div className="mt-7 flex flex-wrap gap-3">
                   <motion.a
                     href="/contact"
-                    className="group relative inline-flex min-h-12 items-center justify-center overflow-hidden rounded-xl border border-slate-900/10 bg-slate-900 px-5 py-3 text-sm font-semibold text-white dark:border-white/10 dark:bg-white/10"
+                    className="group relative inline-flex min-h-12 items-center justify-center overflow-hidden rounded-xl border border-rose-300/40 bg-gradient-to-r from-rose-500/90 via-pink-500/88 to-orange-400/88 px-5 py-3 text-sm font-semibold text-white shadow-[0_16px_32px_rgba(244,114,182,0.22)] dark:border-white/10 dark:bg-white/10 dark:shadow-none"
                     {...buttonHover}
                   >
-                    <span className="absolute inset-0 bg-gradient-to-r from-teal-500/0 via-teal-300/30 to-pink-400/0 opacity-0 transition duration-300 group-hover:opacity-100" />
+                    <span className="absolute inset-0 bg-gradient-to-r from-white/0 via-white/30 to-white/0 opacity-0 transition duration-300 group-hover:opacity-100 dark:from-teal-500/0 dark:via-teal-300/30 dark:to-pink-400/0" />
                     <span className="relative z-10 inline-flex items-center gap-2.5">
                       <FaEnvelope className="h-4 w-4" />
                       Start a conversation
