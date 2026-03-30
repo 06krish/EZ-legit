@@ -16,6 +16,15 @@ import {
 import { VscVscode } from 'react-icons/vsc'
 import { ThemeToggle } from './ThemeToggle'
 import AntigravityBackground from './AntigravityBackground'
+import backendCaseFlowImage from '../Backend.png'
+import memoryShotOne from '../m1.png'
+import memoryShotTwo from '../m2.png'
+import memoryShotThree from '../m3.png'
+import mobileShotOne from '../mob1.jpeg'
+import mobileShotTwo from '../mob2.jpeg'
+import caseShotOne from '../case1.png'
+import caseShotTwo from '../case2.png'
+import caseShotThree from '../case3.png'
 
 const navItems = [
   { label: 'About', href: '#about' },
@@ -78,29 +87,51 @@ const aboutFocusAreas = ['Backend Systems', 'Distributed Design', 'Developer Exp
 
 const projects = [
   {
-    title: 'Full Stack Portfolio Experience',
-    tag: 'Featured',
+    title: 'Real Time Memory Management Tool',
+    tag: 'System',
     copy:
-      'A cinematic personal site that combines motion, bold layouts, and clear storytelling for web and mobile.',
-    stack: ['Next.js', 'React', 'Framer Motion', 'Tailwind CSS'],
+      'A real-time desktop memory monitoring tool that helps track system usage, surface performance pressure, and present live insights in a simple interface.',
+    stack: ['Python', 'Flask', 'Tkinter', 'psutil'],
+    images: [memoryShotOne, memoryShotTwo, memoryShotThree],
+    challenge:
+      'System resource usage is hard to understand at a glance, so the goal was to make memory data easier to monitor in real time through a clear visual interface.',
+    action:
+      'Built the project using Python with Flask, Tkinter, and psutil to capture live system data, organize it into a readable UI, and keep the monitoring flow responsive.',
+    result:
+      'Delivered a practical monitoring tool that gives immediate visibility into memory behavior and makes real-time system observation more accessible.',
     github: null,
+    githubLabel: 'GitHub Coming Soon',
   },
   {
-    title: 'Backend API System',
+    title: 'React + MongoDB (Case flow Management System)',
     tag: 'Server',
     copy:
       'A backend-focused build with structured routes, data models, and scalable service logic.',
-    stack: ['Node.js', 'Express', 'MongoDB'],
+    stack: ['React', 'Node.js', 'MongoDB'],
+    images: [caseShotOne, caseShotTwo, caseShotThree],
+    challenge:
+      'Teams needed a clearer way to track case progress, manage records, and reduce confusion across different workflow stages.',
+    action:
+      'Built a React and MongoDB based system with structured data handling, organized case flows, and a cleaner interface for managing updates and records.',
+    result:
+      'Created a more streamlined case management experience that improves visibility, keeps information organized, and supports smoother day-to-day operations.',
     github: null,
+    githubLabel: 'GitHub Coming Soon',
   },
   {
     title: 'SkyNote',
-    tag: 'Mobile',
+    tag: 'Featured',
     copy:
       'A voice-to-text Android app that lets you record, transcribe, and save notes hands-free. Built with a clean minimal UI and real-time speech recognition.',
     stack: ['Kotlin', 'XML', 'Android Studio'],
-    github: 'https://github.com/06krish/skynote', // 🔁 Replace with your actual repo URL
-    
+    images: ['/Skynote.jpeg', mobileShotOne, mobileShotTwo],
+    challenge:
+      'Users needed a fast way to capture ideas without typing, while keeping the note-taking flow simple and distraction-free.',
+    action:
+      'Built a clean Android experience with Kotlin and XML, integrated speech recognition, and structured the UI so recording, transcription, and saving felt seamless.',
+    result:
+      'Delivered a practical mobile app concept with a polished interface that makes hands-free note capture feel quick, accessible, and useful.',
+    github: 'https://github.com/ayush-6338/skynote',
   },
 ]
 
@@ -109,16 +140,25 @@ const contactMethods = [
     label: 'Email',
     value: 'krishraj3406@gmail.com',
     href: 'mailto:krishraj3406@gmail.com',
+    accent: 'from-rose-500/20 to-orange-400/10',
+    icon: <FaEnvelope className="h-5 w-5" />,
+    note: 'Best for project ideas and internships',
   },
   {
     label: 'LinkedIn',
     value: 'linkedin.com/in/krishraj3406',
     href: 'https://www.linkedin.com/in/krishraj3406',
+    accent: 'from-sky-500/20 to-cyan-400/10',
+    icon: <FaLinkedin className="h-5 w-5" />,
+    note: 'Professional networking and collaborations',
   },
   {
     label: 'WhatsApp',
     value: '+91 9801197200',
     href: 'https://wa.me/919801197200',
+    accent: 'from-emerald-500/20 to-teal-400/10',
+    icon: <FaEnvelope className="h-5 w-5" />,
+    note: 'Fastest way to reach me for quick discussion',
   },
 ]
 
@@ -610,6 +650,33 @@ export default function PortfolioPage() {
           className="relative z-20 mt-8 grid w-full gap-4 sm:grid-cols-3 lg:mt-0 lg:flex lg:flex-col lg:self-center lg:justify-self-end"
         >
           <motion.div
+            className="relative inline-flex items-center gap-4 px-1 sm:col-span-3"
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.45, delay: 0.2, ease: 'easeOut' }}
+          >
+            <span className="relative flex h-5 w-5 shrink-0">
+              <span className="absolute inline-flex h-full w-full rounded-full bg-amber-400/70 animate-ping" />
+              <span className="absolute inline-flex h-full w-full rounded-full bg-orange-400/40 blur-[2px]" />
+              <span className="relative inline-flex h-5 w-5 rounded-full bg-gradient-to-br from-yellow-300 via-orange-400 to-rose-500 shadow-[0_0_24px_rgba(251,146,60,0.8)]" />
+            </span>
+            <motion.p
+              className="bg-gradient-to-r from-amber-500 via-orange-500 to-rose-500 bg-clip-text text-[1.05rem] font-black uppercase tracking-[0.42em] text-transparent drop-shadow-[0_0_18px_rgba(251,146,60,0.3)] dark:from-amber-300 dark:via-orange-300 dark:to-rose-300 sm:text-[1.15rem]"
+              animate={{
+                opacity: [0.82, 1, 0.82],
+                y: [0, -2, 0],
+                textShadow: [
+                  '0 0 0 rgba(251,146,60,0)',
+                  '0 0 22px rgba(251,146,60,0.35)',
+                  '0 0 0 rgba(251,146,60,0)',
+                ],
+              }}
+              transition={{ duration: 2.4, repeat: Infinity, ease: 'easeInOut' }}
+            >
+              Available
+            </motion.p>
+          </motion.div>
+          <motion.div
             className="rounded-[1.5rem] border border-teal-300/30 bg-teal-300/10 p-6 shadow-[inset_0_1px_4px_rgba(45,212,191,0.1)] backdrop-blur-sm dark:border-teal-300/18 dark:bg-teal-300/8"
             {...cardHover}
           >
@@ -793,14 +860,76 @@ export default function PortfolioPage() {
             </h2>
           </div>
 
-          <div className="mt-10 grid gap-5 lg:grid-cols-3">
-            {projects.map((project) => (
+          <div className="mt-10 grid gap-5 lg:grid-cols-[0.95fr_1.18fr_0.95fr]">
+            {projects.map((project, index) => (
               <motion.article
                 key={project.title}
                 {...cardHover}
-                className="overflow-hidden rounded-[1.75rem] border border-slate-200 dark:border-white/10 bg-gradient-to-b from-white/10 to-white/5 p-6 flex flex-col justify-between"
+                className={`group overflow-hidden rounded-[1.75rem] border border-slate-200 dark:border-white/10 bg-gradient-to-b from-white/10 to-white/5 p-6 flex flex-col justify-between ${
+                  index === 1 ? 'lg:px-7' : ''
+                }`}
               >
                 <div>
+                  {project.images && (
+                    <div className="relative mb-6 overflow-hidden rounded-[1.35rem] border border-slate-200/70 bg-slate-950/5 dark:border-white/10">
+                      <div className="absolute inset-0 z-10 bg-gradient-to-t from-slate-950/60 via-transparent to-slate-950/10 opacity-80 transition duration-500 group-hover:opacity-100" />
+                      <motion.div
+                        className="relative aspect-[4/5]"
+                        whileHover={{ scale: 1.02 }}
+                        transition={{ duration: 0.45, ease: 'easeOut' }}
+                      >
+                        <div className="absolute inset-0 transition-transform duration-[1600ms] ease-in-out group-hover:-translate-y-[200%]">
+                          {project.images.map((image, index) => (
+                            <div
+                              key={`${project.title}-shot-${index + 1}`}
+                              className="relative h-full w-full"
+                            >
+                              <Image
+                                src={image}
+                                alt={`${project.title} screenshot ${index + 1}`}
+                                fill
+                                className="object-cover object-top"
+                              />
+                            </div>
+                          ))}
+                        </div>
+                      </motion.div>
+                      <div className="pointer-events-none absolute right-4 top-4 z-20 rounded-full border border-white/20 bg-black/30 px-3 py-1 text-[0.62rem] font-semibold uppercase tracking-[0.26em] text-white/80 backdrop-blur-sm">
+                        Hover to scroll
+                      </div>
+                      <motion.div
+                        aria-hidden="true"
+                        className="pointer-events-none absolute inset-x-6 bottom-4 z-20 h-px bg-gradient-to-r from-transparent via-teal-300/90 to-transparent"
+                        initial={{ scaleX: 0.7, opacity: 0.5 }}
+                        whileHover={{ scaleX: 1.08, opacity: 1 }}
+                        transition={{ duration: 0.35, ease: 'easeOut' }}
+                      />
+                    </div>
+                  )}
+                  {project.image && !project.images && (
+                    <div className="relative mb-6 overflow-hidden rounded-[1.35rem] border border-slate-200/70 bg-slate-950/5 dark:border-white/10">
+                      <div className="absolute inset-0 z-10 bg-gradient-to-t from-slate-950/55 via-slate-950/10 to-transparent opacity-80 transition duration-500 group-hover:opacity-100" />
+                      <motion.div
+                        className="relative aspect-[16/10]"
+                        whileHover={{ scale: 1.04 }}
+                        transition={{ duration: 0.45, ease: 'easeOut' }}
+                      >
+                        <Image
+                          src={project.image}
+                          alt={`${project.title} preview`}
+                          fill
+                          className="object-cover object-center transition duration-500 group-hover:scale-[1.06]"
+                        />
+                      </motion.div>
+                      <motion.div
+                        aria-hidden="true"
+                        className="pointer-events-none absolute inset-x-6 bottom-4 z-20 h-px bg-gradient-to-r from-transparent via-teal-300/90 to-transparent"
+                        initial={{ scaleX: 0.7, opacity: 0.5 }}
+                        whileHover={{ scaleX: 1.08, opacity: 1 }}
+                        transition={{ duration: 0.35, ease: 'easeOut' }}
+                      />
+                    </div>
+                  )}
                   <p className="text-xs font-semibold uppercase tracking-[0.32em] text-rose-300">
                     {project.tag}
                   </p>
@@ -820,21 +949,80 @@ export default function PortfolioPage() {
                       </span>
                     ))}
                   </div>
+
+                  {(project.challenge || project.action || project.result) && (
+                    <div className="mt-6 space-y-3 rounded-[1.25rem] border border-slate-200/70 bg-white/40 p-4 dark:border-white/10 dark:bg-white/[0.03]">
+                      {project.challenge && (
+                        <div>
+                          <p className="text-[0.68rem] font-bold uppercase tracking-[0.28em] text-teal-600 dark:text-teal-300">
+                            Challenge
+                          </p>
+                          <p className="mt-1.5 text-sm leading-6 text-slate-600 dark:text-slate-300">
+                            {project.challenge}
+                          </p>
+                        </div>
+                      )}
+                      {project.action && (
+                        <div>
+                          <p className="text-[0.68rem] font-bold uppercase tracking-[0.28em] text-pink-600 dark:text-pink-300">
+                            Action
+                          </p>
+                          <p className="mt-1.5 text-sm leading-6 text-slate-600 dark:text-slate-300">
+                            {project.action}
+                          </p>
+                        </div>
+                      )}
+                      {project.result && (
+                        <div>
+                          <p className="text-[0.68rem] font-bold uppercase tracking-[0.28em] text-amber-600 dark:text-amber-300">
+                            Result
+                          </p>
+                          <p className="mt-1.5 text-sm leading-6 text-slate-600 dark:text-slate-300">
+                            {project.result}
+                          </p>
+                        </div>
+                      )}
+                    </div>
+                  )}
                 </div>
 
-                {project.github && (
+                {(project.github || project.githubLabel) && (
+                  project.github ? (
                   <motion.a
                     href={project.github}
                     target="_blank"
                     rel="noreferrer"
-                    className="mt-6 inline-flex items-center gap-2.5 self-start rounded-xl border border-white/10 bg-slate-900 dark:bg-white/10 px-4 py-2.5 text-sm font-semibold text-white transition hover:bg-slate-700 dark:hover:bg-white/20"
-                    whileHover={{ y: -2, scale: 1.02 }}
+                    className="group/button relative mt-6 inline-flex items-center gap-2.5 self-start overflow-hidden rounded-xl border border-slate-900/10 bg-slate-900 px-4 py-2.5 text-sm font-semibold text-white transition dark:border-white/10 dark:bg-white/10"
+                    whileHover={{ y: -3, scale: 1.03 }}
                     whileTap={{ scale: 0.97 }}
-                    transition={{ duration: 0.16 }}
+                    transition={{ duration: 0.2 }}
                   >
-                    <FaGithub className="h-4 w-4" />
-                    Review Code
+                    <span className="absolute inset-0 bg-[linear-gradient(120deg,rgba(45,212,191,0)_0%,rgba(45,212,191,0.18)_35%,rgba(255,255,255,0.28)_50%,rgba(244,114,182,0.18)_68%,rgba(244,114,182,0)_100%)] opacity-0 transition duration-300 group-hover/button:opacity-100" />
+                    <motion.span
+                      aria-hidden="true"
+                      className="absolute inset-y-0 -left-1/3 w-1/3 bg-white/20 blur-md"
+                      initial={{ x: '-120%' }}
+                      whileHover={{ x: '380%' }}
+                      transition={{ duration: 0.7, ease: 'easeInOut' }}
+                    />
+                    <span className="relative z-10 inline-flex items-center gap-2.5">
+                      <FaGithub className="h-4 w-4 transition duration-300 group-hover/button:rotate-12" />
+                      Review Code
+                    </span>
                   </motion.a>
+                  ) : (
+                  <motion.div
+                    className="relative mt-6 inline-flex items-center gap-2.5 self-start overflow-hidden rounded-xl border border-slate-300/70 bg-slate-200/70 px-4 py-2.5 text-sm font-semibold text-slate-500 dark:border-white/10 dark:bg-white/5 dark:text-slate-300"
+                    whileHover={{ y: -2 }}
+                    transition={{ duration: 0.2 }}
+                  >
+                    <span className="absolute inset-0 bg-[linear-gradient(120deg,rgba(255,255,255,0.06)_0%,rgba(255,255,255,0.18)_50%,rgba(255,255,255,0.06)_100%)] opacity-60" />
+                    <span className="relative z-10 inline-flex items-center gap-2.5">
+                      <FaGithub className="h-4 w-4 opacity-80" />
+                      {project.githubLabel}
+                    </span>
+                  </motion.div>
+                  )
                 )}
               </motion.article>
             ))}
@@ -842,13 +1030,13 @@ export default function PortfolioPage() {
         </motion.section>
 
         <motion.section {...fadeUp} id="contact" className="relative z-10 pt-4 scroll-mt-28">
-          <SectionTitle
-            eyebrow="Contact"
-            title="Let&apos;s connect and turn your idea into something real."
-            copy="If you have a project idea, freelance requirement, internship opportunity, or just want to collaborate, I&apos;m open to building something thoughtful together."
-          />
+          <div className="mb-8">
+            <p className="text-xs font-semibold uppercase tracking-[0.35em] text-teal-300">
+              Contact
+            </p>
+          </div>
 
-          <div className="mt-10 grid gap-5 lg:grid-cols-[1.1fr_0.9fr]">
+          <div className="grid gap-5 lg:grid-cols-[1.05fr_0.95fr]">
             <div className="space-y-4">
               {contactMethods.map((item) => (
                 <motion.a
@@ -856,29 +1044,86 @@ export default function PortfolioPage() {
                   href={item.href}
                   target={item.href.startsWith('http') ? '_blank' : undefined}
                   rel={item.href.startsWith('http') ? 'noreferrer' : undefined}
-                  className="block rounded-[1.5rem] border border-slate-200 dark:border-white/10 bg-slate-100/60 dark:bg-slate-950/60 p-5 transition hover:border-teal-300/30 hover:bg-slate-200/80 dark:bg-slate-950/80"
+                  className="group relative block overflow-hidden rounded-[1.6rem] border border-slate-200/80 bg-white/60 p-5 shadow-[0_8px_30px_rgb(0,0,0,0.04)] backdrop-blur-xl transition hover:border-teal-300/40 hover:bg-white/80 dark:border-white/10 dark:bg-slate-950/70 dark:hover:bg-slate-950/90"
                   {...cardHover}
                 >
-                  <p className="text-xs font-semibold uppercase tracking-[0.3em] text-slate-400">
-                    {item.label}
-                  </p>
-                  <p className="mt-2 text-lg font-semibold text-slate-900 dark:text-white">{item.value}</p>
+                  <div className={`absolute inset-0 bg-gradient-to-br ${item.accent} opacity-0 transition duration-300 group-hover:opacity-100`} />
+                  <div className="relative z-10 flex items-start justify-between gap-4">
+                    <div>
+                      <p className="text-xs font-semibold uppercase tracking-[0.3em] text-slate-400">
+                        {item.label}
+                      </p>
+                      <p className="mt-2 text-lg font-semibold text-slate-900 dark:text-white">{item.value}</p>
+                      <p className="mt-2 text-sm leading-6 text-slate-500 dark:text-slate-400">
+                        {item.note}
+                      </p>
+                    </div>
+                    <div className="inline-flex h-12 w-12 items-center justify-center rounded-2xl border border-slate-200/80 bg-white/80 text-slate-700 transition duration-300 group-hover:-translate-y-1 group-hover:border-teal-300/40 group-hover:text-teal-700 dark:border-white/10 dark:bg-white/5 dark:text-slate-100">
+                      {item.icon}
+                    </div>
+                  </div>
                 </motion.a>
               ))}
             </div>
 
             <motion.div
-              className="rounded-[1.75rem] border border-teal-300/20 bg-gradient-to-br from-teal-300/10 to-rose-400/10 p-6"
+              className="relative overflow-hidden rounded-[1.9rem] border border-teal-300/20 bg-[radial-gradient(circle_at_top_left,rgba(45,212,191,0.18),transparent_28%),radial-gradient(circle_at_bottom_right,rgba(244,114,182,0.18),transparent_30%),linear-gradient(135deg,rgba(255,255,255,0.78),rgba(255,255,255,0.46))] p-6 shadow-[0_20px_70px_rgba(15,23,42,0.08)] backdrop-blur-xl dark:bg-[radial-gradient(circle_at_top_left,rgba(45,212,191,0.16),transparent_28%),radial-gradient(circle_at_bottom_right,rgba(244,114,182,0.16),transparent_34%),linear-gradient(135deg,rgba(15,23,42,0.9),rgba(2,6,23,0.82))]"
               {...cardHover}
             >
-              <p className="text-sm uppercase tracking-[0.3em] text-teal-200">Best Fit</p>
-              <p className="mt-4 text-2xl font-bold text-slate-900 dark:text-white [font-family:var(--font-display)]">
-                Full-stack web builds, polished portfolio UI, responsive frontend work, and backend integration.
-              </p>
-              <p className="mt-5 text-base leading-7 text-slate-700 dark:text-slate-200">
-                Share your idea, expected stack, and timeline. I can help shape the UI,
-                structure the codebase, and build a cleaner product experience.
-              </p>
+              <div className="absolute -right-10 top-8 h-32 w-32 rounded-full bg-pink-400/20 blur-3xl" />
+              <div className="absolute -left-8 bottom-6 h-28 w-28 rounded-full bg-teal-400/20 blur-3xl" />
+              <div className="relative z-10">
+                <div className="inline-flex items-center gap-2 rounded-full border border-teal-400/25 bg-teal-500/10 px-4 py-2 text-[0.72rem] font-bold uppercase tracking-[0.28em] text-teal-700 dark:text-teal-200">
+                  Available for work
+                </div>
+                <p className="mt-5 text-3xl font-bold leading-tight text-slate-900 dark:text-white [font-family:var(--font-display)]">
+                  Full-stack builds, polished interfaces, and backend-driven product work.
+                </p>
+                <p className="mt-5 max-w-xl text-base leading-7 text-slate-700 dark:text-slate-200">
+                  Share your idea, expected stack, and timeline. I can help shape the UI, structure the codebase, and turn the product into something cleaner and easier to use.
+                </p>
+
+                <div className="mt-6 grid gap-3 sm:grid-cols-3">
+                  <div className="rounded-2xl border border-slate-200/70 bg-white/55 px-4 py-4 dark:border-white/10 dark:bg-white/[0.04]">
+                    <p className="text-[0.68rem] font-bold uppercase tracking-[0.26em] text-slate-500 dark:text-slate-400">Focus</p>
+                    <p className="mt-2 text-sm font-semibold text-slate-900 dark:text-white">Frontend + Backend</p>
+                  </div>
+                  <div className="rounded-2xl border border-slate-200/70 bg-white/55 px-4 py-4 dark:border-white/10 dark:bg-white/[0.04]">
+                    <p className="text-[0.68rem] font-bold uppercase tracking-[0.26em] text-slate-500 dark:text-slate-400">Response</p>
+                    <p className="mt-2 text-sm font-semibold text-slate-900 dark:text-white">Usually within 24 hours</p>
+                  </div>
+                  <div className="rounded-2xl border border-slate-200/70 bg-white/55 px-4 py-4 dark:border-white/10 dark:bg-white/[0.04]">
+                    <p className="text-[0.68rem] font-bold uppercase tracking-[0.26em] text-slate-500 dark:text-slate-400">Open To</p>
+                    <p className="mt-2 text-sm font-semibold text-slate-900 dark:text-white">Internships, freelance, collabs</p>
+                  </div>
+                </div>
+
+                <div className="mt-7 flex flex-wrap gap-3">
+                  <motion.a
+                    href="/contact"
+                    className="group relative inline-flex min-h-12 items-center justify-center overflow-hidden rounded-xl border border-slate-900/10 bg-slate-900 px-5 py-3 text-sm font-semibold text-white dark:border-white/10 dark:bg-white/10"
+                    {...buttonHover}
+                  >
+                    <span className="absolute inset-0 bg-gradient-to-r from-teal-500/0 via-teal-300/30 to-pink-400/0 opacity-0 transition duration-300 group-hover:opacity-100" />
+                    <span className="relative z-10 inline-flex items-center gap-2.5">
+                      <FaEnvelope className="h-4 w-4" />
+                      Start a conversation
+                    </span>
+                  </motion.a>
+                  <motion.a
+                    href="https://www.linkedin.com/in/krishraj3406"
+                    target="_blank"
+                    rel="noreferrer"
+                    className="inline-flex min-h-12 items-center justify-center rounded-xl border border-slate-300/70 bg-white/60 px-5 py-3 text-sm font-semibold text-slate-800 dark:border-white/10 dark:bg-white/[0.04] dark:text-slate-100"
+                    {...buttonHover}
+                  >
+                    <span className="inline-flex items-center gap-2.5">
+                      <FaLinkedin className="h-4 w-4 text-[#0A66C2]" />
+                      Connect on LinkedIn
+                    </span>
+                  </motion.a>
+                </div>
+              </div>
             </motion.div>
           </div>
         </motion.section>
